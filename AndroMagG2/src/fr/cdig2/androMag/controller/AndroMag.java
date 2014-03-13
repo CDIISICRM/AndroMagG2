@@ -1,9 +1,10 @@
-package fr.cdig2.androMag;
+package fr.cdig2.androMag.controller;
 
 import android.app.Activity;
 import android.os.Bundle;
+import fr.cdig2.androMag.R;
 
-public class MainActivity extends Activity
+public class AndroMag extends Activity
 {
     /** Called when the activity is first created. */
     @Override
