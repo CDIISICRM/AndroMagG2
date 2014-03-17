@@ -92,12 +92,22 @@ public class DBHelper extends SQLiteOpenHelper{
             + "FOREIGN KEY(idCommentaire) REFERENCES(" + DATABASE_TABLE_COMMENTAIRES + "(id));";
     
     
-    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(DATABASE_CREATE_SCOPES);
+        db.execSQL(DATABASE_CREATE_COMMENTAIRES);
+        db.execSQL(DATABASE_CREATE_RUBRIQUES);
+        db.execSQL(DATABASE_CREATE_CONTENUS);
+        db.execSQL(DATABASE_CREATE_MAGAZINES);
+        db.execSQL(DATABASE_CREATE_NUMEROS);
+        db.execSQL(DATABASE_CREATE_ARTICLE);
+        db.execSQL(DATABASE_CREATE_COMMENTAIRE_ARTICLE);
+        db.execSQL(DATABASE_CREATE_COMMENTAIRE_MAGAZINE);
+        db.execSQL(DATABASE_CREATE_COMMENTAIRE_RUBRIQUE);
         
     }
 
