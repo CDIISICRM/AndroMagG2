@@ -6,6 +6,7 @@
 
 package dbAccess;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -57,5 +58,30 @@ public class DBAdapter {
     	databaseHelper.close();
 
     	return mCursor;
+    }
+    
+    public long insertMagazine(String nom, long prix, long idContenu){
+        
+        //insérer un magazine
+        ContentValues initialValueMagazine = new ContentValues();
+        initialValueMagazine.put("nom", nom);
+        initialValueMagazine.put("prix", prix);
+        initialValueMagazine.put("idContenu", idContenu);
+        
+        //insertion
+        db = databaseHelper.getWritableDatabase();
+        long idMag=  db.insert(DBHelper.DATABASE_TABLE_MAGAZINES, null, initialValueMagazine);
+        databaseHelper.close();
+        return idMag;
+    }
+    
+    public long insertTheme(String nomTheme){
+         //insérer un contenu
+        ContentValues initialValuesContenu = new ContentValues();
+        initialValuesContenu.put("nom", nomTheme);
+        db = databaseHelper.getWritableDatabase();
+        long idContenu =  db.insert(DBHelper.DATABASE_TABLE_THEMES, null, initialValuesContenu);
+        databaseHelper.close();
+        return idContenu;
     }
 }

@@ -20,12 +20,11 @@ public class DBHelper extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
     
     public static final String DATABASE_TABLE_MAGAZINES = "magazines";
-    public static final String DATABASE_TABLE_CONTENUS  = "contenus";
+    public static final String DATABASE_TABLE_THEMES  = "themes";
     public static final String DATABASE_TABLE_COMMENTAIRES = "commentaires";
     public static final String DATABASE_TABLE_COMMENTAIRE_MAGAZINE = "commentaire_magazine";
     public static final String DATABASE_TABLE_COMMENTAIRE_RUBRIQUE = "commentaire_rubrique";
     public static final String DATABASE_TABLE_COMMENTAIRE_ARTICLE = "commentaire_article";
-    public static final String DATABASE_TABLE_SCOPES = "scopes";
     public static final String DATABASE_TABLE_RUBRIQUES = "rubriques";
     public static final String DATABASE_TABLE_NUMEROS = "numeros";
     public static final String DATABASE_TABLE_ARTICLES = "articles";
@@ -36,8 +35,8 @@ public class DBHelper extends SQLiteOpenHelper{
             "id INTEGER PRIMARY KEY, " + 
             "nom VARCHAR(45) NOT NULL, " +
             "idContenu INTEGER NOT NULL, " +
-            "prix INTEGER NOT NULL, "
-            + "FOREIGN KEY(idContenu) REFERENCES(" + DATABASE_TABLE_CONTENUS + "(id));";
+            "prix REAL NOT NULL, " +
+            "FOREIGN KEY(idContenu) REFERENCES " + DATABASE_TABLE_THEMES + "(id));";
     
     //table commentaires
     public static final String DATABASE_CREATE_COMMENTAIRES = "CREATE TABLE " + DATABASE_TABLE_COMMENTAIRES + " (" + 
@@ -45,51 +44,50 @@ public class DBHelper extends SQLiteOpenHelper{
             "idScope INTEGER, " + 
             "page INTEGER, " + 
             "rate INTEGRER, " + 
-            "texte TEXT, " + 
-            "FOREIGN KEY(idScope) REFERENCES("+DATABASE_TABLE_SCOPES+"(id));";
+            "texte TEXT);";
     
     //table contenus
-     public static final String DATABASE_CREATE_CONTENUS = "CREATE TABLE " + DATABASE_TABLE_CONTENUS + " (" + 
+     public static final String DATABASE_CREATE_THEMES = "CREATE TABLE " + DATABASE_TABLE_THEMES + " (" + 
              "id INTEGER PRIMARY KEY, " +
              "nom VARCHAR(45)); ";
     
-     public static final String DATABASE_CREATE_SCOPES = "CREATE TABLE " + DATABASE_TABLE_SCOPES + " (" +
-             "id INTEGER PRIMARY KEY, " + 
-             "nom VARCHAR(45));";
      
      public static final String DATABASE_CREATE_COMMENTAIRE_MAGAZINE = "CREATE TABLE " + DATABASE_TABLE_COMMENTAIRE_MAGAZINE + " (" + 
-             "idCommentaire INTEGER PRIMARY KEY, " + 
-             "idMagazine INTEGER PRIMARY KEY, " +
-             "FOREIGN KEY(idCommentaire) REFERENCES(" + DATABASE_TABLE_COMMENTAIRES + "(id), "
-             + "FOREIGN KEY(idMagazine) REFERENCES(" + DATABASE_TABLE_MAGAZINES + "(id));";
+             "idCommentaire INTEGER, " + 
+             "idMagazine INTEGER, " +
+             "FOREIGN KEY(idCommentaire) REFERENCES " + DATABASE_TABLE_COMMENTAIRES + "(id), "
+             + "FOREIGN KEY(idMagazine) REFERENCES " + DATABASE_TABLE_MAGAZINES + "(id), "
+             + "PRIMARY KEY(idCommentaire, idMagazine));";
      
     public static final String DATABASE_CREATE_COMMENTAIRE_ARTICLE = "CREATE TABLE " + DATABASE_TABLE_COMMENTAIRE_ARTICLE + " (" + 
-             "idCommentaire INTEGER PRIMARY KEY, " + 
-             "idArticle INTEGER PRIMARY KEY, " +
-             "FOREIGN KEY(idCommentaire) REFERENCES(" + DATABASE_TABLE_COMMENTAIRES + "(id), "
-             + "FOREIGN KEY(idArticle) REFERENCES(" + DATABASE_TABLE_ARTICLES + "(id));";
+             "idCommentaire INTEGER, " + 
+             "idArticle INTEGER, " +
+             "FOREIGN KEY(idCommentaire) REFERENCES " + DATABASE_TABLE_COMMENTAIRES + "(id), "
+             + "FOREIGN KEY(idArticle) REFERENCES " + DATABASE_TABLE_ARTICLES + "(id),"
+            + " PRIMARY KEY (idCommentaire, idArticle));";
            
     public static final String DATABASE_CREATE_ARTICLE = "CREATE TABLE " + DATABASE_TABLE_ARTICLES + " ("
             + "id INTEGER PRIMARY KEY, "
             + "titre VARCHAR(45) NOT NULL, "
             + "idNo INTEGER NOT NULL, "
-            + "FOREING KEY(idNo) REFERENCES(" + DATABASE_TABLE_NUMEROS + "(id));";
+            + "FOREIGN KEY(idNo) REFERENCES " + DATABASE_TABLE_NUMEROS + "(id));";
     
     public static final String DATABASE_CREATE_NUMEROS = "CREATE TABLE " + DATABASE_TABLE_NUMEROS + " ("
             + "id INTEGER PRIMARY KEY, "
             + "no INTEGER NOT NULL, "
             + "idMag INTEGER NOT NULL, "
-            + "FOREIGN KEY(idMag) REFERENCES(" + DATABASE_TABLE_MAGAZINES + "(id));";
+            + "FOREIGN KEY(idMag) REFERENCES " + DATABASE_TABLE_MAGAZINES + "(id));";
     
     public static final String DATABASE_CREATE_RUBRIQUES = "CREATE TABLE " + DATABASE_TABLE_RUBRIQUES + " ("
             + "id INTEGER PRIMARY KEY, "
             + "nom VARCHAR(45) NOT NULL);";
 
     public static final String DATABASE_CREATE_COMMENTAIRE_RUBRIQUE = "CREATE TABLE " + DATABASE_TABLE_COMMENTAIRE_RUBRIQUE + " ("
-            + "idRubrique INTEGER PRIMARY KEY, "
-            + "idCommentaire INTEGER PRIMARY KEY, "
-            + "FOREIGN KEY(idRubrique) REFERENCES(" + DATABASE_TABLE_RUBRIQUES + "(id), "
-            + "FOREIGN KEY(idCommentaire) REFERENCES(" + DATABASE_TABLE_COMMENTAIRES + "(id));";
+            + "idRubrique INTEGER, "
+            + "idCommentaire INTEGER, "
+            + "FOREIGN KEY(idRubrique) REFERENCES " + DATABASE_TABLE_RUBRIQUES + "(id), "
+            + "FOREIGN KEY(idCommentaire) REFERENCES " + DATABASE_TABLE_COMMENTAIRES + "(id),"
+            + " PRIMARY KEY(idRubrique, idCommentaire));";
     
     
     public DBHelper(Context context) {
@@ -98,10 +96,9 @@ public class DBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DATABASE_CREATE_SCOPES);
         db.execSQL(DATABASE_CREATE_COMMENTAIRES);
         db.execSQL(DATABASE_CREATE_RUBRIQUES);
-        db.execSQL(DATABASE_CREATE_CONTENUS);
+        db.execSQL(DATABASE_CREATE_THEMES);
         db.execSQL(DATABASE_CREATE_MAGAZINES);
         db.execSQL(DATABASE_CREATE_NUMEROS);
         db.execSQL(DATABASE_CREATE_ARTICLE);
