@@ -12,6 +12,7 @@ import dbAccess.DBHelper;
 import fr.cdig2.androMag.metier.Article;
 import fr.cdig2.androMag.metier.Commentaire;
 import fr.cdig2.androMag.metier.Numero;
+import fr.cdig2.androMag.metier.Rubrique;
 
 import java.util.prefs.Preferences;
 
@@ -63,15 +64,21 @@ public class AndroMag extends Activity
 //        }
 //        
 //        System.out.println(cur2.toString());
-//        
-//        
-//        Article unArticle = new Article("Stella", 1);
-//        
-//        long idArticle = dba.insertArticle(unArticle);
-//        
-//        Article AffArticle = dba.selectArticle(idArticle);
-//        
-//        Log.i("Affiche Article", AffArticle.toString());
+//   
+        
+        Article unArticle = new Article("Stella", 1);
+        
+        long idArticle = dba.insertArticle(unArticle);
+        
+        Article AffArticle = dba.selectArticle(idArticle);
+        
+        Log.i("Affiche Article", AffArticle.toString());
+        
+        Rubrique uneRubrique = new  Rubrique(1,"Titania");
+        long idRubrique = dba.insertRubruque(uneRubrique);
+        
+        Rubrique AffRubrique = dba.selectRubrique(idRubrique);
+        Log.i("Affiche Rubrique", AffRubrique.toString());
         
         Cursor cur = dba.ExecuteQuery("SELECT * FROM "+DBHelper.DATABASE_TABLE_MAGAZINES, null);
         while(!cur.isAfterLast()){
@@ -86,6 +93,13 @@ public class AndroMag extends Activity
             Log.i("unTheme", cur2.getLong(0) + "-" + cur2.getString(1));
             
             cur2.moveToNext();
+        }
+        
+        Cursor cur3 =dba.ExecuteQuery("SELECT * FROM " + DBHelper.DATABASE_TABLE_RUBRIQUES , null);
+          while(!cur3.isAfterLast()){
+            Log.i("uneRubrique", cur3.getLong(0) + "-" + cur3.getString(1));
+            
+            cur3.moveToNext();
         }
     }
     

@@ -19,6 +19,10 @@ public class Rubrique extends Commentable {
         this.id = _id;
         this.nom = _nom;
     }
+    
+      public Rubrique(String _nom) {
+        this.nom = _nom;
+    }
 
     public long getId() {
         return id;

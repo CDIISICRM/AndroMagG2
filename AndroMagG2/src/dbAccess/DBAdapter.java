@@ -152,5 +152,28 @@ public class DBAdapter {
         
     }
     
+    
+    public long insertRubruque(Rubrique rubrique)
+    {
+        ContentValues initialValuesRubrique = new ContentValues();
+        
+        initialValuesRubrique.put("nom", rubrique.getNom());
+        
+        open();
+        long idRubrique = db.insert(DBHelper.DATABASE_TABLE_RUBRIQUES, null, initialValuesRubrique);
+        close();
+        return idRubrique;
+    }
+    
+    public Rubrique selectRubrique(long id)
+    {
+        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_RUBRIQUES + " WHERE id=" + id;
+        
+        Cursor cur = ExecuteQuery(sql, null);
+        Rubrique maRubrique = new Rubrique(cur.getLong(0), cur.getString(1));
+        return maRubrique;
+        
+        
+    }
    
 }
