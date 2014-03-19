@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 import dbAccess.DBAdapter;
 import dbAccess.DBHelper;
+import fr.cdig2.androMag.metier.Article;
 import fr.cdig2.androMag.metier.Commentaire;
 import fr.cdig2.androMag.metier.Numero;
 
@@ -62,5 +63,14 @@ public class AndroMag extends Activity
         }
         
         System.out.println(cur2.toString());
+        
+        
+        Article unArticle = new Article("Stella", 1);
+        
+        long idArticle = dba.insertArticle(unArticle);
+        
+        Article AffArticle = dba.selectArticle(idArticle);
+        
+        Log.i("Affiche Article", AffArticle.toString());
     }
 }

@@ -12,6 +12,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import fr.cdig2.androMag.metier.Article;
 import fr.cdig2.androMag.metier.Numero;
 
 /**
@@ -125,5 +126,28 @@ public class DBAdapter {
         Cursor cur = ExecuteQuery(sql, null);
         Numero unNumero = new Numero(cur.getLong(0), cur.getInt(1), cur.getLong(2));
         return unNumero;
+    }
+    
+    public long insertArticle(Article article)
+    {
+        ContentValues initialValuesArticle = new ContentValues();
+        
+         initialValuesArticle.put("titre", article.getTitre());
+         initialValuesArticle.put("idNo", article.getIdNo());
+         
+         open();
+         
+         long idArticle = db.insert(DBHelper.DATABASE_TABLE_ARTICLES, null, initialValuesArticle);
+         close();
+         return idArticle;
+    }
+    
+    public Article selectArticle(long id)
+    {
+        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_ARTICLES +" WHERE id =" +id;
+        Cursor cur = ExecuteQuery(sql, null);
+        Article unArticle = new Article(cur.getLong(0),cur.getString(1),cur.getLong(2));
+        return unArticle;
+        
     }
 }

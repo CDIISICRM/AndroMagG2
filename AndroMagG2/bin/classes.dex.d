@@ -8,6 +8,7 @@ C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\clas
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\R$layout.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\R$string.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\R.class \
+C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\metier\Article.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\metier\Commentable.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\metier\Commentaire.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\metier\Numero.class \
