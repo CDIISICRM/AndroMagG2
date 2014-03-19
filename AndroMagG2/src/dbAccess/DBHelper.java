@@ -34,9 +34,9 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String DATABASE_CREATE_MAGAZINES = "CREATE TABLE " + DATABASE_TABLE_MAGAZINES + " (" +
             "id INTEGER PRIMARY KEY, " + 
             "nom VARCHAR(45) NOT NULL, " +
-            "idContenu INTEGER NOT NULL, " +
+            "idTheme INTEGER NOT NULL, " +
             "prix REAL NOT NULL, " +
-            "FOREIGN KEY(idContenu) REFERENCES " + DATABASE_TABLE_THEMES + "(id));";
+            "FOREIGN KEY(idTheme) REFERENCES " + DATABASE_TABLE_THEMES + "(id));";
     
     //table commentaires
     public static final String DATABASE_CREATE_COMMENTAIRES = "CREATE TABLE " + DATABASE_TABLE_COMMENTAIRES + " (" + 

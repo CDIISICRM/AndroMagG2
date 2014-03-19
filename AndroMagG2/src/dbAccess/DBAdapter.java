@@ -7,6 +7,7 @@
 package dbAccess;
 
 import fr.cdig2.androMag.metier.Commentaire;
+import fr.cdig2.androMag.metier.Magazine;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -63,7 +64,7 @@ public class DBAdapter {
 
     	return mCursor;
     }
-    
+    /*
     public long insertMagazine(String nom, long prix, long idContenu){
         
         //insérer un magazine
@@ -78,6 +79,7 @@ public class DBAdapter {
         close();
         return idMag;
     }
+    */
     
     public long insertCommentaire(Commentaire monCommentaire){
         
@@ -100,6 +102,28 @@ public class DBAdapter {
         close();
     }
     
+    public long insertMagazine(Magazine monMagazine)
+    {
+    	//insérer un magazine
+        ContentValues intitaliserMagazine = new ContentValues();
+        intitaliserMagazine.put("nom", monMagazine.getNom());
+        intitaliserMagazine.put("idTheme", monMagazine.getIdTheme());
+        intitaliserMagazine.put("prix", monMagazine.getPrix());
+        
+        //insertion
+        open();
+        long idMagazine = db.insert(DBHelper.DATABASE_TABLE_MAGAZINES, null, intitaliserMagazine);
+        close();
+        return idMagazine;
+    }
+    
+    public void supprimerMagazine(Magazine monMagazine) {
+        
+        open();
+        db.delete("magazines", "id="+monMagazine.getId(), null);
+        close();
+    }
+
     public long insertTheme(String nomTheme){
          //insérer un contenu
         ContentValues initialValuesContenu = new ContentValues();
@@ -107,7 +131,7 @@ public class DBAdapter {
         open();
         long idContenu =  db.insert(DBHelper.DATABASE_TABLE_THEMES, null, initialValuesContenu);
         close();
-        return idContenu;
+        return idContenu; 
     }
     
     public long insertNo(Numero numero){
@@ -122,6 +146,7 @@ public class DBAdapter {
         
     }
     
+
     public Numero selectNumero(long id){
         String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_NUMEROS + " WHERE id = "+id;
         Cursor cur = ExecuteQuery(sql, null);

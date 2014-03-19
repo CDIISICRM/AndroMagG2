@@ -14,6 +14,11 @@ import fr.cdig2.androMag.metier.Commentaire;
 import fr.cdig2.androMag.metier.Numero;
 import fr.cdig2.androMag.metier.Rubrique;
 
+import fr.cdig2.androMag.metier.Magazine;
+
+import fr.cdig2.androMag.metier.Numero;
+
+
 import java.util.prefs.Preferences;
 
 
@@ -80,6 +85,7 @@ public class AndroMag extends Activity
         Rubrique AffRubrique = dba.selectRubrique(idRubrique);
         Log.i("Affiche Rubrique", AffRubrique.toString());
         
+
         Cursor cur = dba.ExecuteQuery("SELECT * FROM "+DBHelper.DATABASE_TABLE_MAGAZINES, null);
         while(!cur.isAfterLast()){
             Log.i("unMagazine", cur.getLong(0) + "-" + cur.getString(1) + "-" + cur.getLong(2) + "-" + cur.getInt(3));
@@ -94,14 +100,13 @@ public class AndroMag extends Activity
             
             cur2.moveToNext();
         }
-        
+
         Cursor cur3 =dba.ExecuteQuery("SELECT * FROM " + DBHelper.DATABASE_TABLE_RUBRIQUES , null);
           while(!cur3.isAfterLast()){
             Log.i("uneRubrique", cur3.getLong(0) + "-" + cur3.getString(1));
             
             cur3.moveToNext();
         }
+
     }
-    
-    
 }

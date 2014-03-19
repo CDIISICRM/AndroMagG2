@@ -1,0 +1,47 @@
+﻿Merge branch 'master' of https://github.com/CDIISICRM/AndroMagG2
+
+Conflicts:
+	AndroMagG2/bin/AndroMagG2-debug-unaligned.apk
+	AndroMagG2/bin/classes.dex
+	AndroMagG2/bin/classes/dbAccess/DBAdapter.class
+	AndroMagG2/bin/classes/dbAccess/DBHelper.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/controller/AndroMag.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/controller/BuildConfig.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/controller/R$attr.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/controller/R$drawable.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/controller/R$layout.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/controller/R$string.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/controller/R.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/metier/Article.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/metier/Commentable.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/metier/Commentaire.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/metier/Numero.class
+	AndroMagG2/bin/classes/fr/cdig2/androMag/metier/Rubrique.class
+	AndroMagG2/src/dbAccess/DBAdapter.java
+	AndroMagG2/src/fr/cdig2/androMag/controller/AndroMag.java
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 2 and 3 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	modified:   AndroMagG2/bin/classes/dbAccess/DBAdapter.class
+#	modified:   AndroMagG2/bin/classes/fr/cdig2/androMag/controller/AndroMag.class
+#	modified:   AndroMagG2/src/dbAccess/DBAdapter.java
+#	modified:   AndroMagG2/src/fr/cdig2/androMag/controller/AndroMag.java
+#
+
+YAYAYYAYAYAYAYAYYAYA
