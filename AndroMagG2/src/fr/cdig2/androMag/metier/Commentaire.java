@@ -42,6 +42,6 @@ public class Commentaire {
 	public void EnregistrerCommentaire(Context context)
 		{
 		DBAdapter db = new DBAdapter(context);
-		this.id = db.insertCommentaire(this.note, this.texte);
+		this.id = db.insertCommentaire(this);
 		}
 }

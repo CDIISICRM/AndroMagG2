@@ -76,12 +76,12 @@ public class DBAdapter {
         return idMag;
     }
     
-    public long insertCommentaire(int note, String texte){
+    public long insertCommentaire(Commentaire monCommentaire){
         
         //insérer un magazine
         ContentValues initialiserCommentaire = new ContentValues();
-        initialiserCommentaire.put("rate", note);
-        initialiserCommentaire.put("texte", texte);
+        initialiserCommentaire.put("rate", monCommentaire.getNote());
+        initialiserCommentaire.put("texte", monCommentaire.getTexte());
         
         //insertion
         open();
