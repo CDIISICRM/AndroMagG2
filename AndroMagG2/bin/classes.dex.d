@@ -12,3 +12,4 @@ C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\clas
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\metier\Commentable.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\metier\Commentaire.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\metier\Numero.class \
+C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\metier\Rubrique.class \

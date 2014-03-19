@@ -14,6 +14,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import fr.cdig2.androMag.metier.Article;
 import fr.cdig2.androMag.metier.Numero;
+import fr.cdig2.androMag.metier.Rubrique;
 
 /**
  *
@@ -150,4 +151,6 @@ public class DBAdapter {
         return unArticle;
         
     }
+    
+   
 }
