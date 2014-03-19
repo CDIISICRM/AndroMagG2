@@ -34,9 +34,11 @@ public class AndroMag extends Activity
         
         //recuperation
         Cursor cur = dba.ExecuteQuery("SELECT * FROM magazines", null);
-        
-        Toast.makeText(this, cur.getString(1), Toast.LENGTH_LONG).show();
-        
+        while(!cur.isAfterLast()){
+            Toast.makeText(this, cur.getString(1), Toast.LENGTH_LONG).show();
+            System.out.println(cur.toString());
+            cur.moveToNext();
+        }
         
     }
 }

@@ -69,9 +69,9 @@ public class DBAdapter {
         initialValueMagazine.put("idContenu", idContenu);
         
         //insertion
-        db = databaseHelper.getWritableDatabase();
+        open();
         long idMag=  db.insert(DBHelper.DATABASE_TABLE_MAGAZINES, null, initialValueMagazine);
-        databaseHelper.close();
+        close();
         return idMag;
     }
     
@@ -79,9 +79,9 @@ public class DBAdapter {
          //insérer un contenu
         ContentValues initialValuesContenu = new ContentValues();
         initialValuesContenu.put("nom", nomTheme);
-        db = databaseHelper.getWritableDatabase();
+        open();
         long idContenu =  db.insert(DBHelper.DATABASE_TABLE_THEMES, null, initialValuesContenu);
-        databaseHelper.close();
+        close();
         return idContenu;
     }
 }
