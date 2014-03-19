@@ -13,6 +13,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import fr.cdig2.androMag.metier.Article;
+import fr.cdig2.androMag.metier.Numero;
+import fr.cdig2.androMag.metier.Rubrique;
 
 /**
  *
@@ -130,4 +133,48 @@ public class DBAdapter {
         close();
         return idContenu; 
     }
+    
+    public long insertNo(Numero numero){
+        ContentValues initialValuesNumero = new ContentValues();
+        
+        initialValuesNumero.put("no", numero.getNo());
+        initialValuesNumero.put("idMag", numero.getIdMag());
+        open();
+        long idNumero = db.insert(DBHelper.DATABASE_TABLE_NUMEROS, null, initialValuesNumero);
+        close();
+        return idNumero;
+        
+    }
+    
+    public Numero selectNumero(long id){
+        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_NUMEROS + " WHERE id = "+id;
+        Cursor cur = ExecuteQuery(sql, null);
+        Numero unNumero = new Numero(cur.getLong(0), cur.getInt(1), cur.getLong(2));
+        return unNumero;
+    }
+    
+    public long insertArticle(Article article)
+    {
+        ContentValues initialValuesArticle = new ContentValues();
+        
+         initialValuesArticle.put("titre", article.getTitre());
+         initialValuesArticle.put("idNo", article.getIdNo());
+         
+         open();
+         
+         long idArticle = db.insert(DBHelper.DATABASE_TABLE_ARTICLES, null, initialValuesArticle);
+         close();
+         return idArticle;
+    }
+    
+    public Article selectArticle(long id)
+    {
+        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_ARTICLES +" WHERE id =" +id;
+        Cursor cur = ExecuteQuery(sql, null);
+        Article unArticle = new Article(cur.getLong(0),cur.getString(1),cur.getLong(2));
+        return unArticle;
+        
+    }
+    
+   
 }

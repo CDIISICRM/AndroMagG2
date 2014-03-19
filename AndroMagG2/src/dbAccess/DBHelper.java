@@ -87,6 +87,11 @@ public class DBHelper extends SQLiteOpenHelper{
             + "FOREIGN KEY(idCommentaire) REFERENCES " + DATABASE_TABLE_COMMENTAIRES + "(id),"
             + " PRIMARY KEY(idRubrique, idCommentaire));";
     
+    public static final String DATABASE_INSERT_DEFAULTS_THEMES = "INSERT INTO "+ DATABASE_TABLE_THEMES + "(nom) "
+            + "VALUES('Jardin'),('TV'), ('Maison'),('Déco');"; 
+    
+    public static final String DATABASE_INSERT_DEFAULTS_MAGAZINES = "INSERT INTO "+ DATABASE_TABLE_MAGAZINES + "(nom, prix, idContenu) "
+            + "VALUES('J''aimes les plantes vertes', 10, 1), ('Passer une soirée', 2, 2), ('Le ménage pour les débutants', 1, 3), ('Décorer un élève ingénieur', 8, 4);";
     
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -103,7 +108,8 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL(DATABASE_CREATE_COMMENTAIRE_ARTICLE);
         db.execSQL(DATABASE_CREATE_COMMENTAIRE_MAGAZINE);
         db.execSQL(DATABASE_CREATE_COMMENTAIRE_RUBRIQUE);
-        
+        db.execSQL(DATABASE_INSERT_DEFAULTS_THEMES);
+        db.execSQL(DATABASE_INSERT_DEFAULTS_MAGAZINES);
     }
 
     @Override
