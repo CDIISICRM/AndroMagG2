@@ -11,6 +11,7 @@ import dbAccess.DBAdapter;
 import dbAccess.DBHelper;
 import fr.cdig2.androMag.metier.Article;
 import fr.cdig2.androMag.metier.Commentaire;
+import fr.cdig2.androMag.metier.Numero;
 
 import fr.cdig2.androMag.metier.Magazine;
 
@@ -77,9 +78,6 @@ public class AndroMag extends Activity
 //        
 //        Log.i("Affiche Article", AffArticle.toString());
         
-
- 
-       //  System.out.println(cur2.toString());
 
         Cursor cur = dba.ExecuteQuery("SELECT * FROM "+DBHelper.DATABASE_TABLE_MAGAZINES, null);
         while(!cur.isAfterLast()){

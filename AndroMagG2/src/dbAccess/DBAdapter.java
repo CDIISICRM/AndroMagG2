@@ -146,6 +146,20 @@ public class DBAdapter {
         
     }
     
+
+    public long insertNo(Numero numero){
+        ContentValues initialValuesNumero = new ContentValues();
+        
+        initialValuesNumero.put("no", numero.getNo());
+        initialValuesNumero.put("idMag", numero.getIdMag());
+        open();
+        long idNumero = db.insert(DBHelper.DATABASE_TABLE_NUMEROS, null, initialValuesNumero);
+        close();
+        return idNumero;
+        
+    }
+    
+
     public Numero selectNumero(long id){
         String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_NUMEROS + " WHERE id = "+id;
         Cursor cur = ExecuteQuery(sql, null);
