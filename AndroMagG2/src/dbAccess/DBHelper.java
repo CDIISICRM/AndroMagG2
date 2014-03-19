@@ -40,9 +40,7 @@ public class DBHelper extends SQLiteOpenHelper{
     
     //table commentaires
     public static final String DATABASE_CREATE_COMMENTAIRES = "CREATE TABLE " + DATABASE_TABLE_COMMENTAIRES + " (" + 
-            "id INTEGER PRIMARY KEY, " + 
-            "idScope INTEGER, " + 
-            "page INTEGER, " + 
+            "id INTEGER PRIMARY KEY, " +  
             "rate INTEGRER, " + 
             "texte TEXT);";
     

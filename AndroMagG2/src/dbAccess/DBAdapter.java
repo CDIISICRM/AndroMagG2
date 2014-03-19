@@ -6,6 +6,7 @@
 
 package dbAccess;
 
+import fr.cdig2.androMag.metier.Commentaire;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -73,6 +74,27 @@ public class DBAdapter {
         long idMag=  db.insert(DBHelper.DATABASE_TABLE_MAGAZINES, null, initialValueMagazine);
         close();
         return idMag;
+    }
+    
+    public long insertCommentaire(int note, String texte){
+        
+        //insérer un magazine
+        ContentValues initialiserCommentaire = new ContentValues();
+        initialiserCommentaire.put("rate", note);
+        initialiserCommentaire.put("texte", texte);
+        
+        //insertion
+        open();
+        long idCommentaire=  db.insert(DBHelper.DATABASE_TABLE_COMMENTAIRES, null, initialiserCommentaire);
+        close();
+        return idCommentaire;
+    }
+    
+    public void supprimerCommentaire(Commentaire monCommentaire) {
+        
+        open();
+        db.delete("commentaires", "id="+monCommentaire.getId(), null);
+        close();
     }
     
     public long insertTheme(String nomTheme){

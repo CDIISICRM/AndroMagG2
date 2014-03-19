@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.Toast;
 import dbAccess.DBAdapter;
 import dbAccess.DBHelper;
+import fr.cdig2.androMag.metier.Commentaire;
+
 import java.util.prefs.Preferences;
 
 
@@ -31,14 +33,26 @@ public class AndroMag extends Activity
         
         //insérer un magazine
         dba.insertMagazine("A La Maison", 10, 1);
+        Commentaire nosCommentaire = new Commentaire(0, "Commentaire 2");
+        nosCommentaire.EnregistrerCommentaire(this.getApplicationContext());
         
         //recuperation
+        /*
         Cursor cur = dba.ExecuteQuery("SELECT * FROM magazines", null);
         while(!cur.isAfterLast()){
             Toast.makeText(this, cur.getString(1), Toast.LENGTH_LONG).show();
-            System.out.println(cur.toString());
+            
             cur.moveToNext();
         }
+        */
+        dba.supprimerCommentaire(nosCommentaire);
         
+        Cursor cur2 = dba.ExecuteQuery("SELECT * FROM "+DBHelper.DATABASE_TABLE_COMMENTAIRES, null);
+        while(!cur2.isAfterLast()) {
+        	Toast.makeText(this, cur2.getString(2), Toast.LENGTH_LONG).show();
+        	cur2.moveToNext();
+        }
+        
+        System.out.println(cur2.toString());
     }
 }
