@@ -1,0 +1,3 @@
+# view AndroidManifest.xml #generated:7
+-keep class fr.cdig2.androMag.controller.AndroMag { <init>(...); }
+

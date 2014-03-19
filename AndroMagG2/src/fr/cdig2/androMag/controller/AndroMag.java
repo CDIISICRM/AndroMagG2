@@ -5,10 +5,12 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 import dbAccess.DBAdapter;
 import dbAccess.DBHelper;
 import fr.cdig2.androMag.metier.Commentaire;
+import fr.cdig2.androMag.metier.Numero;
 
 import java.util.prefs.Preferences;
 
@@ -36,15 +38,21 @@ public class AndroMag extends Activity
         Commentaire nosCommentaire = new Commentaire(0, "Commentaire 2");
         nosCommentaire.EnregistrerCommentaire(this.getApplicationContext());
         
+        //creer numero
+        Numero unNumero = new Numero(10, 2);
+        long idNumero = dba.insertNo(unNumero);
+        Numero leNumeroSauvegarde = dba.selectNumero(idNumero);
+        Log.i("unNumero", leNumeroSauvegarde.toString()); 
+        
         //recuperation
-        /*
+        
         Cursor cur = dba.ExecuteQuery("SELECT * FROM magazines", null);
         while(!cur.isAfterLast()){
-            Toast.makeText(this, cur.getString(1), Toast.LENGTH_LONG).show();
+            Log.i("unMagazine", cur.getString(1));
             
             cur.moveToNext();
         }
-        */
+        
         dba.supprimerCommentaire(nosCommentaire);
         
         Cursor cur2 = dba.ExecuteQuery("SELECT * FROM "+DBHelper.DATABASE_TABLE_COMMENTAIRES, null);
