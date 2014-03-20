@@ -16,6 +16,7 @@ import android.database.sqlite.SQLiteDatabase;
 import fr.cdig2.androMag.metier.Article;
 import fr.cdig2.androMag.metier.Numero;
 import fr.cdig2.androMag.metier.Rubrique;
+import java.util.ArrayList;
 
 /**
  *
@@ -64,22 +65,59 @@ public class DBAdapter {
 
     	return mCursor;
     }
-    /*
-    public long insertMagazine(String nom, long prix, long idContenu){
+    
+    public ArrayList<Article> selectArticleParIdNo(long idNo){
+        ArrayList<Article> lesArticles = new ArrayList<Article>();
+        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_ARTICLES + " WHERE idNo = " + idNo;
         
-        //insérer un magazine
-        ContentValues initialValueMagazine = new ContentValues();
-        initialValueMagazine.put("nom", nom);
-        initialValueMagazine.put("prix", prix);
-        initialValueMagazine.put("idContenu", idContenu);
+        Cursor cur = ExecuteQuery(sql, null);
+        while(!cur.isAfterLast()){
+            Article unArticle = new Article(cur.getLong(0), cur.getString(1), cur.getLong(2));
+            lesArticles.add(unArticle);
+            cur.moveToNext();
+        }
         
-        //insertion
-        open();
-        long idMag=  db.insert(DBHelper.DATABASE_TABLE_MAGAZINES, null, initialValueMagazine);
-        close();
-        return idMag;
+        return lesArticles;
     }
-    */
+    
+    public ArrayList<Numero> selectNumeroParIdMagazine(long idMagazine){
+        ArrayList<Numero> lesNumeros = new ArrayList<Numero>();
+        
+        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_NUMEROS + " WHERE idMag = " + idMagazine;
+        open();
+        Cursor cur = ExecuteQuery(sql, null);
+        //on vas récuperer apartir de la table numéro une liste d'article et sont numéro associer.
+        while(!cur.isAfterLast()){
+            ArrayList<Article> lesArticles = new ArrayList<Article>();
+            Numero unNumero = new Numero(cur.getLong(0), cur.getInt(1), cur.getLong(2));
+            lesArticles = selectArticleParIdNo(cur.getLong(0));
+            ArrayList lesIdArticle = new ArrayList();
+            for(Article unArticle : lesArticles){
+                lesIdArticle.add(unArticle.getId());
+            }
+            unNumero.setLesIdArcicles(lesIdArticle);
+            lesNumeros.add(unNumero);
+            cur.moveToNext();
+        }
+        close();
+        return lesNumeros;
+    }
+    
+
+    public Magazine selectMagazine(long id){
+        String sql="SELECT * FROM " + DBHelper.DATABASE_TABLE_MAGAZINES + " WHERE id = " + id;
+        
+        ArrayList<Numero> lesNumeros = selectNumeroParIdMagazine(id);
+        ArrayList lesIdNumero = new ArrayList();
+        for(Numero unNumero : lesNumeros){
+            lesIdNumero.add(unNumero.getId());
+        }
+        open();
+        Cursor cur = ExecuteQuery(sql, null);
+        Magazine leMagazine = new Magazine(cur.getLong(0), cur.getString(1),cur.getLong(2), cur.getInt(3), lesIdNumero);
+        close();
+        return leMagazine;
+    }
     
     public long insertCommentaire(Commentaire monCommentaire){
         
@@ -101,6 +139,9 @@ public class DBAdapter {
         db.delete("commentaires", "id="+monCommentaire.getId(), null);
         close();
     }
+    
+    
+    
     
     public long insertMagazine(Magazine monMagazine)
     {
@@ -154,6 +195,7 @@ public class DBAdapter {
         return unNumero;
     }
     
+    
     public long insertArticle(Article article)
     {
         ContentValues initialValuesArticle = new ContentValues();
@@ -168,6 +210,8 @@ public class DBAdapter {
          return idArticle;
     }
     
+    
+    
     public Article selectArticle(long id)
     {
         String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_ARTICLES +" WHERE id =" +id;
@@ -176,7 +220,6 @@ public class DBAdapter {
         return unArticle;
         
     }
-    
     
     public long insertRubruque(Rubrique rubrique)
     {
@@ -198,6 +241,18 @@ public class DBAdapter {
         Rubrique maRubrique = new Rubrique(cur.getLong(0), cur.getString(1));
         return maRubrique;
         
+        
+    }
+    
+    public long supprimerRuprique(Rubrique rubrique)
+    {
+        
+       
+        
+        open();
+        int delete = db.delete(DBHelper.DATABASE_TABLE_RUBRIQUES,  "id= " + rubrique.getId(),null);
+        close();
+        return delete;
         
     }
    

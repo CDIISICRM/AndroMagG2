@@ -6,6 +6,8 @@
 
 package fr.cdig2.androMag.metier;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author crm
@@ -15,6 +17,7 @@ public class Numero extends Commentable{
     long id;
     int no;
     long idMag;
+    private ArrayList lesIdArcicles;
     
     public Numero(int no, long idMag) {
         this.no = no;
@@ -25,6 +28,14 @@ public class Numero extends Commentable{
         this.id = id;
         this.no = no;
         this.idMag = idMag;
+    }
+
+    public void setLesIdArcicles(ArrayList<Article> lesIdArcicles) {
+        this.lesIdArcicles = lesIdArcicles;
+    }
+
+    public ArrayList<Article> getLesIdArcicles() {
+        return lesIdArcicles;
     }
 
     public long getId() {

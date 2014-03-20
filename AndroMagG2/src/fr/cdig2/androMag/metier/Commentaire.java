@@ -15,7 +15,7 @@ import android.content.Context;
  *
  * @author crm
  */
-public class Commentaire {
+public class Commentaire extends Commentable{
 	private long id;
 	private int note;
 	private String texte;

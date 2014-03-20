@@ -2,24 +2,46 @@ package fr.cdig2.androMag.metier;
 
 import android.content.Context;
 import dbAccess.DBAdapter;
+import java.util.ArrayList;
 
-public class Magazine {
+public class Magazine extends Commentable{
 	private long id; 
     private String nom; 
-    private int idTheme;
+    private long idTheme;
     private float prix;
+    private ArrayList lesIdNumeros;
     
-    public Magazine (String _nom, int _idTheme, float _prix){
+    public Magazine (String _nom, long _idTheme, float _prix){
     	this.id = 0;
     	this.nom = _nom;
     	this.idTheme= _idTheme;
     	this.prix= _prix;
     }
+
+    
+    
+
+    public Magazine(long id, String nom, long idTheme, float prix, ArrayList lesIdNumeros) {
+        this.id = id;
+        this.nom = nom;
+        this.idTheme = idTheme;
+        this.prix = prix;
+        this.lesIdNumeros = lesIdNumeros;
+    }
+
+    public void setLesIdNumeros(ArrayList lesIdNumeros) {
+        this.lesIdNumeros = lesIdNumeros;
+    }
+
+    public ArrayList getLesIdNumeros() {
+        return lesIdNumeros;
+    }
     
     // Accesseur 
+    
     public long getId() { return this.id; }
     public String getNom () { return this.nom; }
-    public int getIdTheme () { return this.idTheme; }
+    public long getIdTheme () { return this.idTheme; }
     public float getPrix () { return this.prix; }
     
     // Mutateur
@@ -27,10 +49,10 @@ public class Magazine {
     public void setNom(String nom) { this.nom=nom; }
     public void setIdTheme(int IdTheme) { this.idTheme=IdTheme; }
     public void setPrix(float prix) { this.prix=prix; }
+
+    @Override
+    public String toString() {
+        return "Magazine{" + "id=" + id + ", nom=" + nom + ", idTheme=" + idTheme + ", prix=" + prix + ", lesIdNumeros=" + lesIdNumeros.toString() + '}';
+    }
     
-	public void EnregistrerMagazine (Context context)
-	{
-	DBAdapter db = new DBAdapter(context);
-	this.id = db.insertMagazine(this);
-	}
 }

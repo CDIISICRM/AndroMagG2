@@ -90,8 +90,14 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String DATABASE_INSERT_DEFAULTS_THEMES = "INSERT INTO "+ DATABASE_TABLE_THEMES + "(nom) "
             + "VALUES('Jardin'),('TV'), ('Maison'),('Déco');"; 
     
-    public static final String DATABASE_INSERT_DEFAULTS_MAGAZINES = "INSERT INTO "+ DATABASE_TABLE_MAGAZINES + "(nom, prix, idContenu) "
+    public static final String DATABASE_INSERT_DEFAULTS_MAGAZINES = "INSERT INTO "+ DATABASE_TABLE_MAGAZINES + "(nom, prix, idTheme) "
             + "VALUES('J''aimes les plantes vertes', 10, 1), ('Passer une soirée', 2, 2), ('Le ménage pour les débutants', 1, 3), ('Décorer un élève ingénieur', 8, 4);";
+    
+    public static final String DATABASE_INSERT_NUMERO = "INSERT INTO " + DBHelper.DATABASE_TABLE_NUMEROS + " ( no, idMag) "
+            + "VALUES (1,1), (2,1);";
+    
+    public static final String DATABASE_INSERT_ARTICLES = "INSERT INTO " + DBHelper.DATABASE_TABLE_ARTICLES + " (titre, idNo) "
+            + "VALUES ('un bel article', 1), ('un article intéressant', 1), ('un article dans le numéro 2', 2), ('un quatrieme article', 2);";
     
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -110,6 +116,8 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL(DATABASE_CREATE_COMMENTAIRE_RUBRIQUE);
         db.execSQL(DATABASE_INSERT_DEFAULTS_THEMES);
         db.execSQL(DATABASE_INSERT_DEFAULTS_MAGAZINES);
+        db.execSQL(DATABASE_INSERT_NUMERO);
+        db.execSQL(DATABASE_INSERT_ARTICLES);
     }
 
     @Override
