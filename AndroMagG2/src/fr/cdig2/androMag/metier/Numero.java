@@ -28,6 +28,7 @@ public class Numero extends Commentable{
         this.id = id;
         this.no = no;
         this.idMag = idMag;
+   
     }
 
     public void setLesIdArcicles(ArrayList<Article> lesIdArcicles) {

@@ -27,6 +27,12 @@ public class Commentaire extends Commentable{
 		this.note = _note;
 		this.texte = _texte;
 		}
+
+    public Commentaire(long id, int note, String texte) {
+        this.id = id;
+        this.note = note;
+        this.texte = texte;
+    }
 			
 	// Accesseurs
 	public long getId() { return id; }

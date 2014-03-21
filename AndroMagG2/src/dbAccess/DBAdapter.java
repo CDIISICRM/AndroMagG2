@@ -73,11 +73,26 @@ public class DBAdapter {
         Cursor cur = ExecuteQuery(sql, null);
         while(!cur.isAfterLast()){
             Article unArticle = new Article(cur.getLong(0), cur.getString(1), cur.getLong(2));
+            unArticle.setLesCommentaire(selectLesCommentairesParArticle(cur.getLong(0)));
             lesArticles.add(unArticle);
             cur.moveToNext();
         }
         
         return lesArticles;
+    }
+    
+    public ArrayList<Commentaire> selectLesCommentairesParArticle(long idArticle){
+        ArrayList<Commentaire> lesCommentaires = new ArrayList<Commentaire>();
+        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_COMMENTAIRES
+                + " WHERE " + DBHelper.DATABASE_TABLE_COMMENTAIRE_ARTICLE + "(idArticle) = " + DBHelper.DATABASE_TABLE_ARTICLES + "(id) "
+                + " AND " + DBHelper.DATABASE_TABLE_ARTICLES + "(id) = " + idArticle;
+        Cursor cur = ExecuteQuery(sql, null);
+        while(!cur.isAfterLast()){
+            Commentaire unCommentaire = new Commentaire(cur.getLong(0),cur.getInt(1),cur.getString(2));
+            lesCommentaires.add(unCommentaire);
+            cur.moveToNext();
+        }
+        return lesCommentaires;
     }
     
     public ArrayList<Numero> selectNumeroParIdMagazine(long idMagazine){

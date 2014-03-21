@@ -27,6 +27,7 @@ public class Magazine extends Commentable{
         this.idTheme = idTheme;
         this.prix = prix;
         this.lesIdNumeros = lesIdNumeros;
+       
     }
 
     public void setLesIdNumeros(ArrayList lesIdNumeros) {

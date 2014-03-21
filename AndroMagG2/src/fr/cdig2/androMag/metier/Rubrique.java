@@ -6,6 +6,8 @@
 
 package fr.cdig2.androMag.metier;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author crm
@@ -18,6 +20,7 @@ public class Rubrique extends Commentable {
     public Rubrique(long _id, String _nom) {
         this.id = _id;
         this.nom = _nom;
+
     }
     
       public Rubrique(String _nom) {

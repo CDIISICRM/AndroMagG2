@@ -2,7 +2,11 @@ package fr.cdig2.androMag.metier;
 
 import java.util.ArrayList;
 
-public abstract class Commentable {
+public class Commentable {
 	private ArrayList<Commentaire> lesCommentaire;
+
+    public void setLesCommentaire(ArrayList<Commentaire> lesCommentaire) {
+        this.lesCommentaire = lesCommentaire;
+    }
 
 }
