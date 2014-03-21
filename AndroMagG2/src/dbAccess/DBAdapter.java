@@ -8,6 +8,7 @@ package dbAccess;
 
 import fr.cdig2.androMag.metier.Commentaire;
 import fr.cdig2.androMag.metier.Magazine;
+import android.R.string;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -16,6 +17,7 @@ import android.database.sqlite.SQLiteDatabase;
 import fr.cdig2.androMag.metier.Article;
 import fr.cdig2.androMag.metier.Numero;
 import fr.cdig2.androMag.metier.Rubrique;
+
 import java.util.ArrayList;
 
 /**
@@ -66,6 +68,17 @@ public class DBAdapter {
     	return mCursor;
     }
     
+    public ArrayList<Magazine> slectTousLesMagazines(){
+    	ArrayList<Magazine> lesMagazines = new ArrayList<Magazine>();
+    	String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_MAGAZINES;
+    	Cursor cur = ExecuteQuery(sql, null);
+    	while(!cur.isAfterLast()){
+    		Magazine unMagazine = new Magazine(cur.getLong(0), cur.getString(1), cur.getLong(2), cur.getInt(3), null);
+    		lesMagazines.add(unMagazine);
+    		cur.moveToNext();
+    	}
+    	return lesMagazines;
+    }
     public ArrayList<Article> selectArticleParIdNo(long idNo){
         ArrayList<Article> lesArticles = new ArrayList<Article>();
         String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_ARTICLES + " WHERE idNo = " + idNo;

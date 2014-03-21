@@ -1,0 +1,1 @@
+03-21 10:14:03.091: E/AndroidRuntime(3805): java.lang.IllegalStateException: ArrayAdapter requires the resource ID to be a TextView
