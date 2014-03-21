@@ -83,9 +83,37 @@ public class DBAdapter {
     
     public ArrayList<Commentaire> selectLesCommentairesParArticle(long idArticle){
         ArrayList<Commentaire> lesCommentaires = new ArrayList<Commentaire>();
-        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_COMMENTAIRES
-                + " WHERE " + DBHelper.DATABASE_TABLE_COMMENTAIRE_ARTICLE + "(idArticle) = " + DBHelper.DATABASE_TABLE_ARTICLES + "(id) "
-                + " AND " + DBHelper.DATABASE_TABLE_ARTICLES + "(id) = " + idArticle;
+        String sql = "SELECT " +  DBHelper.DATABASE_TABLE_COMMENTAIRES + ".* FROM " + DBHelper.DATABASE_TABLE_COMMENTAIRES + ", " + DBHelper.DATABASE_TABLE_ARTICLES + ", " + DBHelper.DATABASE_TABLE_COMMENTAIRE_ARTICLE
+                + " WHERE " + DBHelper.DATABASE_TABLE_COMMENTAIRE_ARTICLE + ".idArticle = " + DBHelper.DATABASE_TABLE_ARTICLES + ".id "
+                + " AND " + DBHelper.DATABASE_TABLE_ARTICLES + ".id = " + idArticle;
+        Cursor cur = ExecuteQuery(sql, null);
+        while(!cur.isAfterLast()){
+            Commentaire unCommentaire = new Commentaire(cur.getLong(0),cur.getInt(1),cur.getString(2));
+            lesCommentaires.add(unCommentaire);
+            cur.moveToNext();
+        }
+        return lesCommentaires;
+    }
+    
+    public ArrayList<Commentaire> selectLesCommentairesParNumero(long idNo){
+        ArrayList<Commentaire> lesCommentaires = new ArrayList<Commentaire>();
+        String sql = "SELECT " +  DBHelper.DATABASE_TABLE_COMMENTAIRES + ".* FROM " + DBHelper.DATABASE_TABLE_COMMENTAIRES + ", " + DBHelper.DATABASE_TABLE_NUMEROS + ", " + DBHelper.DATABASE_TABLE_COMMENTAIRE_NUMERO
+                + " WHERE " + DBHelper.DATABASE_TABLE_COMMENTAIRE_NUMERO + ".idNumero = " + DBHelper.DATABASE_TABLE_NUMEROS + ".id "
+                + " AND " + DBHelper.DATABASE_TABLE_NUMEROS + ".id = " + idNo;
+        Cursor cur = ExecuteQuery(sql, null);
+        while(!cur.isAfterLast()){
+            Commentaire unCommentaire = new Commentaire(cur.getLong(0),cur.getInt(1),cur.getString(2));
+            lesCommentaires.add(unCommentaire);
+            cur.moveToNext();
+        }
+        return lesCommentaires;
+    }
+    
+    public ArrayList<Commentaire> selectLesCommentairesParRubrique(long idRubrique){
+        ArrayList<Commentaire> lesCommentaires = new ArrayList<Commentaire>();
+        String sql = "SELECT " +  DBHelper.DATABASE_TABLE_COMMENTAIRES + ".* FROM " + DBHelper.DATABASE_TABLE_COMMENTAIRES + ", " + DBHelper.DATABASE_TABLE_RUBRIQUES + ", " + DBHelper.DATABASE_TABLE_COMMENTAIRE_RUBRIQUE
+                + " WHERE " + DBHelper.DATABASE_TABLE_COMMENTAIRE_RUBRIQUE + ".idRubrique = " + DBHelper.DATABASE_TABLE_RUBRIQUES + ".id "
+                + " AND " + DBHelper.DATABASE_TABLE_RUBRIQUES + ".id = " + idRubrique;
         Cursor cur = ExecuteQuery(sql, null);
         while(!cur.isAfterLast()){
             Commentaire unCommentaire = new Commentaire(cur.getLong(0),cur.getInt(1),cur.getString(2));

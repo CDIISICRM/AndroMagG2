@@ -50,4 +50,11 @@ public class Commentaire extends Commentable{
 		DBAdapter db = new DBAdapter(context);
 		this.id = db.insertCommentaire(this);
 		}
+
+    @Override
+    public String toString() {
+        return "Commentaire{" + "id=" + id + ", note=" + note + ", texte=" + texte + '}';
+    }
+        
+        
 }

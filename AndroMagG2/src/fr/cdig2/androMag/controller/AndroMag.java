@@ -125,16 +125,20 @@ public class AndroMag extends Activity
 //            Log.i("Affiche Rubrique", AffRubrique.toString());
 //        }
       
-      
-        Magazine unMagazine = dba.selectMagazine(1);
-        Log.i("magazine", unMagazine.toString());
-        ArrayList<Numero> lesnNumeros = dba.selectNumeroParIdMagazine(1);
-        for(Numero unNumero : lesnNumeros){
-            Log.i("numero", unNumero.toString());
-            ArrayList<Article> lesArticles = dba.selectArticleParIdNo(unNumero.getId());
-            for(Article unArticle : lesArticles){
-                Log.i("article", unArticle.toString());
-            }
-        }
+//      
+//        Magazine unMagazine = dba.selectMagazine(1);
+//        Log.i("magazine", unMagazine.toString());
+//        ArrayList<Numero> lesnNumeros = dba.selectNumeroParIdMagazine(1);
+//        for(Numero unNumero : lesnNumeros){
+//            Log.i("numero", unNumero.toString());
+//            ArrayList<Article> lesArticles = dba.selectArticleParIdNo(unNumero.getId());
+//            for(Article unArticle : lesArticles){
+//                Log.i("article", unArticle.toString());
+//            }
+//        }
+        
+        
+        ArrayList<Commentaire> lesCommentaires = dba.selectLesCommentairesParArticle(1);
+        Log.i("commentaire", lesCommentaires.toString());
     }
 }

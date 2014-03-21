@@ -22,7 +22,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String DATABASE_TABLE_MAGAZINES = "magazines";
     public static final String DATABASE_TABLE_THEMES  = "themes";
     public static final String DATABASE_TABLE_COMMENTAIRES = "commentaires";
-    public static final String DATABASE_TABLE_COMMENTAIRE_MAGAZINE = "commentaire_magazine";
+    public static final String DATABASE_TABLE_COMMENTAIRE_NUMERO = "commentaire_numero";
     public static final String DATABASE_TABLE_COMMENTAIRE_RUBRIQUE = "commentaire_rubrique";
     public static final String DATABASE_TABLE_COMMENTAIRE_ARTICLE = "commentaire_article";
     public static final String DATABASE_TABLE_RUBRIQUES = "rubriques";
@@ -50,12 +50,12 @@ public class DBHelper extends SQLiteOpenHelper{
              "nom VARCHAR(45)); ";
     
      
-     public static final String DATABASE_CREATE_COMMENTAIRE_MAGAZINE = "CREATE TABLE " + DATABASE_TABLE_COMMENTAIRE_MAGAZINE + " (" + 
+     public static final String DATABASE_CREATE_COMMENTAIRE_NUMERO = "CREATE TABLE " + DATABASE_TABLE_COMMENTAIRE_NUMERO + " (" + 
              "idCommentaire INTEGER, " + 
-             "idMagazine INTEGER, " +
+             "idNumero INTEGER, " +
              "FOREIGN KEY(idCommentaire) REFERENCES " + DATABASE_TABLE_COMMENTAIRES + "(id), "
-             + "FOREIGN KEY(idMagazine) REFERENCES " + DATABASE_TABLE_MAGAZINES + "(id), "
-             + "PRIMARY KEY(idCommentaire, idMagazine));";
+             + "FOREIGN KEY(idNumero) REFERENCES " + DATABASE_TABLE_NUMEROS + "(id), "
+             + "PRIMARY KEY(idCommentaire, idNumero));";
      
     public static final String DATABASE_CREATE_COMMENTAIRE_ARTICLE = "CREATE TABLE " + DATABASE_TABLE_COMMENTAIRE_ARTICLE + " (" + 
              "idCommentaire INTEGER, " + 
@@ -112,7 +112,7 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL(DATABASE_CREATE_NUMEROS);
         db.execSQL(DATABASE_CREATE_ARTICLE);
         db.execSQL(DATABASE_CREATE_COMMENTAIRE_ARTICLE);
-        db.execSQL(DATABASE_CREATE_COMMENTAIRE_MAGAZINE);
+        db.execSQL(DATABASE_CREATE_COMMENTAIRE_NUMERO);
         db.execSQL(DATABASE_CREATE_COMMENTAIRE_RUBRIQUE);
         db.execSQL(DATABASE_INSERT_DEFAULTS_THEMES);
         db.execSQL(DATABASE_INSERT_DEFAULTS_MAGAZINES);
