@@ -35,12 +35,15 @@ public class MagazineActivity extends Activity {
 		DBAdapter dba = new DBAdapter(this);
 		ArrayList<Magazine> lesMagazines = dba.slectTousLesMagazines();
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ArrayList<String> list = new ArrayList<String>();
 		for(Magazine unMagazine : lesMagazines){
 			list.add(unMagazine.getNom());
 		}
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_list_view,R.id.titre_liste_magazine, list);
 =======
+=======
+>>>>>>> da8b187d9e5e8d3cd969badd6e9e1880d260a1df
                 
 //		ArrayList<String> list = new ArrayList<String>();
                 
@@ -51,6 +54,9 @@ public class MagazineActivity extends Activity {
 //		}
                 MagazineAdapter adapter = new MagazineAdapter(lesMagazines, this);
 //		ArrayAdapter<Magazine> adapter = new ArrayAdapter<Magazine>(this, R.layout.item_list_view,R.id.magazineId, lesMagazines);
+<<<<<<< HEAD
+>>>>>>> da8b187d9e5e8d3cd969badd6e9e1880d260a1df
+=======
 >>>>>>> da8b187d9e5e8d3cd969badd6e9e1880d260a1df
 		laListView.setAdapter(adapter);
 	}

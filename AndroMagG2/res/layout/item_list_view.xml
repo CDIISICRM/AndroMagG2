@@ -6,7 +6,12 @@
 
     <TextView
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:id="@+id/note_liste_magazine"
+=======
+        android:id="@+id/magazineNom"
+        android:text="magazineNom"
+>>>>>>> da8b187d9e5e8d3cd969badd6e9e1880d260a1df
 =======
         android:id="@+id/magazineNom"
         android:text="magazineNom"
