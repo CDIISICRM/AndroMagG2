@@ -73,9 +73,10 @@ public class DBAdapter {
     	String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_MAGAZINES;
     	Cursor cur = ExecuteQuery(sql, null);
     	while(!cur.isAfterLast()){
-    		Magazine unMagazine = new Magazine(cur.getLong(0), cur.getString(1), cur.getLong(2), cur.getInt(3), null);
-    		lesMagazines.add(unMagazine);
-    		cur.moveToNext();
+            
+            Magazine unMagazine = new Magazine(cur.getLong(0), cur.getString(1), cur.getLong(2), cur.getInt(3), null);
+            lesMagazines.add(unMagazine);
+            cur.moveToNext();
     	}
     	return lesMagazines;
     }
@@ -85,7 +86,8 @@ public class DBAdapter {
         
         Cursor cur = ExecuteQuery(sql, null);
         while(!cur.isAfterLast()){
-            Article unArticle = new Article(cur.getLong(0), cur.getString(1), cur.getLong(2));
+            ArrayList<Commentaire> lesCommentaires = selectLesCommentairesParNumero(idNo);
+            Article unArticle = new Article(cur.getLong(0), cur.getString(1), cur.getLong(2), lesCommentaires);
             unArticle.setLesCommentaire(selectLesCommentairesParArticle(cur.getLong(0)));
             lesArticles.add(unArticle);
             cur.moveToNext();
@@ -144,14 +146,16 @@ public class DBAdapter {
         Cursor cur = ExecuteQuery(sql, null);
         //on vas récuperer apartir de la table numéro une liste d'article et sont numéro associer.
         while(!cur.isAfterLast()){
+            ArrayList<Commentaire> lesCommentaires = selectLesCommentairesParNumero(cur.getLong(0));
             ArrayList<Article> lesArticles = new ArrayList<Article>();
-            Numero unNumero = new Numero(cur.getLong(0), cur.getInt(1), cur.getLong(2));
+            
             lesArticles = selectArticleParIdNo(cur.getLong(0));
             ArrayList lesIdArticle = new ArrayList();
             for(Article unArticle : lesArticles){
                 lesIdArticle.add(unArticle.getId());
             }
-            unNumero.setLesIdArcicles(lesIdArticle);
+            Numero unNumero = new Numero(cur.getLong(0), cur.getInt(1), cur.getLong(2),lesIdArticle, lesCommentaires);
+            
             lesNumeros.add(unNumero);
             cur.moveToNext();
         }
@@ -170,6 +174,7 @@ public class DBAdapter {
         }
         open();
         Cursor cur = ExecuteQuery(sql, null);
+        
         Magazine leMagazine = new Magazine(cur.getLong(0), cur.getString(1),cur.getLong(2), cur.getInt(3), lesIdNumero);
         close();
         return leMagazine;
@@ -198,7 +203,7 @@ public class DBAdapter {
     }
     
     
-    
+   
     
     public long insertMagazine(Magazine monMagazine)
     {
@@ -248,7 +253,13 @@ public class DBAdapter {
     public Numero selectNumero(long id){
         String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_NUMEROS + " WHERE id = "+id;
         Cursor cur = ExecuteQuery(sql, null);
-        Numero unNumero = new Numero(cur.getLong(0), cur.getInt(1), cur.getLong(2));
+        ArrayList<Commentaire> lesCommentaires = selectLesCommentairesParNumero(id);
+        ArrayList<Article> lesArticles = selectArticleParIdNo(id);
+        ArrayList lesIdArticles = new ArrayList();
+        for(Article unArticle : lesArticles){
+            lesIdArticles.add(unArticle.getId());
+        }
+        Numero unNumero = new Numero(cur.getLong(0), cur.getInt(1), cur.getLong(2),lesIdArticles, lesCommentaires);
         return unNumero;
     }
     
@@ -273,7 +284,8 @@ public class DBAdapter {
     {
         String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_ARTICLES +" WHERE id =" +id;
         Cursor cur = ExecuteQuery(sql, null);
-        Article unArticle = new Article(cur.getLong(0),cur.getString(1),cur.getLong(2));
+        ArrayList<Commentaire> lesCommentaires = selectLesCommentairesParArticle(id);
+        Article unArticle = new Article(cur.getLong(0),cur.getString(1),cur.getLong(2), lesCommentaires);
         return unArticle;
         
     }
@@ -295,7 +307,9 @@ public class DBAdapter {
         String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_RUBRIQUES + " WHERE id=" + id;
         
         Cursor cur = ExecuteQuery(sql, null);
-        Rubrique maRubrique = new Rubrique(cur.getLong(0), cur.getString(1));
+        ArrayList<Commentaire> lesCommentaires = selectLesCommentairesParRubrique(id);
+        
+        Rubrique maRubrique = new Rubrique(cur.getLong(0), cur.getString(1), lesCommentaires);
         return maRubrique;
         
         

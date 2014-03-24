@@ -18,18 +18,16 @@ public class Numero extends Commentable{
     int no;
     long idMag;
     private ArrayList lesIdArcicles;
-    
-    public Numero(int no, long idMag) {
-        this.no = no;
-        this.idMag = idMag;
-    }
 
-    public Numero(long id, int no, long idMag) {
+    public Numero(long id, int no, long idMag, ArrayList lesIdArcicles, ArrayList<Commentaire> lesCommentaire) {
+        super(lesCommentaire);
         this.id = id;
         this.no = no;
         this.idMag = idMag;
-   
+        this.lesIdArcicles = lesIdArcicles;
     }
+    
+    
 
     public void setLesIdArcicles(ArrayList<Article> lesIdArcicles) {
         this.lesIdArcicles = lesIdArcicles;

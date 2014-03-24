@@ -4,22 +4,12 @@ import android.content.Context;
 import dbAccess.DBAdapter;
 import java.util.ArrayList;
 
-public class Magazine extends Commentable{
+public class Magazine {
 	private long id; 
     private String nom; 
     private long idTheme;
     private float prix;
     private ArrayList lesIdNumeros;
-    
-    public Magazine (String _nom, long _idTheme, float _prix){
-    	this.id = 0;
-    	this.nom = _nom;
-    	this.idTheme= _idTheme;
-    	this.prix= _prix;
-    }
-
-    
-    
 
     public Magazine(long id, String nom, long idTheme, float prix, ArrayList lesIdNumeros) {
         this.id = id;
@@ -27,8 +17,11 @@ public class Magazine extends Commentable{
         this.idTheme = idTheme;
         this.prix = prix;
         this.lesIdNumeros = lesIdNumeros;
-       
     }
+
+    
+    
+    
 
     public void setLesIdNumeros(ArrayList lesIdNumeros) {
         this.lesIdNumeros = lesIdNumeros;

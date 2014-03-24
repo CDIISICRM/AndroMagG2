@@ -1,26 +1,10 @@
 package fr.cdig2.androMag.controller;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 import dbAccess.DBAdapter;
-import dbAccess.DBHelper;
-import fr.cdig2.androMag.metier.Article;
 import fr.cdig2.androMag.metier.Commentaire;
-import fr.cdig2.androMag.metier.Numero;
-import fr.cdig2.androMag.metier.Rubrique;
-import fr.cdig2.androMag.metier.Magazine;
-import fr.cdig2.androMag.metier.Numero;
-
-import java.util.ArrayList;
-
-
-import java.util.prefs.Preferences;
 
 
 

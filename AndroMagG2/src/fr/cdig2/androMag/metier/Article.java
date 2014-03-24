@@ -18,17 +18,16 @@ public class Article extends Commentable{
     private String titre;
     private long idNo;
 
-    public Article(long id, String titre, long idNo) {
+    public Article(long id, String titre, long idNo, ArrayList<Commentaire> lesCommentaire) {
+        super(lesCommentaire);
         this.id = id;
         this.titre = titre;
         this.idNo = idNo;
-        
     }
 
-    public Article(String titre, long idNo) {
-        this.titre = titre;
-        this.idNo = idNo;
-    }
+    
+
+    
 
     public long getId() {
         return id;

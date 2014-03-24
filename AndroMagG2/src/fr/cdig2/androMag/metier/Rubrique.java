@@ -17,16 +17,13 @@ public class Rubrique extends Commentable {
     private long id;
     private String nom;
 
-    public Rubrique(long _id, String _nom) {
-        this.id = _id;
-        this.nom = _nom;
-
-    }
-    
-      public Rubrique(String _nom) {
-        this.nom = _nom;
+    public Rubrique(long id, String nom, ArrayList<Commentaire> lesCommentaire) {
+        super(lesCommentaire);
+        this.id = id;
+        this.nom = nom;
     }
 
+   
     public long getId() {
         return id;
     }

@@ -6,6 +6,7 @@ C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\res\draw
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\res\layout\activity_magazine.xml \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\res\layout\andromag.xml \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\res\layout\fragment_magazine.xml \
+C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\res\layout\item_list_view.xml \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\res\menu\magazine.xml \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\res\values\dimens.xml \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\res\values\strings.xml \
