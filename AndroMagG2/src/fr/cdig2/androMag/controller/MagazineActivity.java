@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.os.Build;
+import android.widget.TextView;
 
 public class MagazineActivity extends Activity {
 
@@ -33,11 +34,16 @@ public class MagazineActivity extends Activity {
 		
 		DBAdapter dba = new DBAdapter(this);
 		ArrayList<Magazine> lesMagazines = dba.slectTousLesMagazines();
-		ArrayList<String> list = new ArrayList<String>();
-		for(Magazine unMagazine : lesMagazines){
-			list.add(unMagazine.getNom());
-		}
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_list_view,R.id.textView3, list);
+                
+//		ArrayList<String> list = new ArrayList<String>();
+                
+//		for(Magazine unMagazine : lesMagazines){
+//                    TextView magazineNom = (TextView) laListView.findViewById(R.id.magazineId);
+//                    magazineNom.setText(unMagazine.getNom());
+////			list.add(unMagazine.getNom());
+//		}
+                MagazineAdapter adapter = new MagazineAdapter(lesMagazines, this);
+//		ArrayAdapter<Magazine> adapter = new ArrayAdapter<Magazine>(this, R.layout.item_list_view,R.id.magazineId, lesMagazines);
 		laListView.setAdapter(adapter);
 	}
 
