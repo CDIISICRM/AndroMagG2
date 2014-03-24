@@ -4,31 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
-    <TextView
-<<<<<<< HEAD
-<<<<<<< HEAD
+    <!-- <TextView
+
         android:id="@+id/note_liste_magazine"
-=======
-        android:id="@+id/magazineNom"
-        android:text="magazineNom"
->>>>>>> da8b187d9e5e8d3cd969badd6e9e1880d260a1df
-=======
-        android:id="@+id/magazineNom"
-        android:text="magazineNom"
->>>>>>> da8b187d9e5e8d3cd969badd6e9e1880d260a1df
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         />
+         /> -->
     
     <TextView
-        android:id="@+id/titre_liste_magazine"
+        android:id="@+id/magazine_nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
          />
 
-    <CheckBox
-        android:id="@+id/ckbox_liste_magazine"
+  <!--   <CheckBox
+         android:id="@+id/ck_magazine"
+        android:text="magazineNom"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" /> -->
 
 </LinearLayout>

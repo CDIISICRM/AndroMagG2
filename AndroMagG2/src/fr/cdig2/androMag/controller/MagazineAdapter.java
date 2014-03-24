@@ -53,7 +53,7 @@ public class MagazineAdapter extends BaseAdapter{
             layoutItem = (LinearLayout) convertView;
         }
         
-        TextView magazineNom = (TextView) layoutItem.findViewById(R.id.magazineNom);
+        TextView magazineNom = (TextView) layoutItem.findViewById(R.id.magazine_nom);
         
         magazineNom.setText(listeMag.get(position).getNom());
         
