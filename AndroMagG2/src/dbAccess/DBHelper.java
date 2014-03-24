@@ -9,6 +9,7 @@ package dbAccess;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import java.util.Locale;
 
 /**
  *
@@ -30,6 +31,8 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String DATABASE_TABLE_ARTICLES = "articles";
     
     
+    //set encodig
+    public static final String DATABASE_ENCODE = "PRAGMA " + DATABASE_NAME + ".encoding = 'UTF-8';";
     //table magazines
     public static final String DATABASE_CREATE_MAGAZINES = "CREATE TABLE " + DATABASE_TABLE_MAGAZINES + " (" +
             "id INTEGER PRIMARY KEY, " + 
@@ -105,6 +108,7 @@ public class DBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.setLocale(Locale.FRANCE);
         db.execSQL(DATABASE_CREATE_COMMENTAIRES);
         db.execSQL(DATABASE_CREATE_RUBRIQUES);
         db.execSQL(DATABASE_CREATE_THEMES);
