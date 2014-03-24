@@ -37,7 +37,7 @@ public class MagazineActivity extends Activity {
 		for(Magazine unMagazine : lesMagazines){
 			list.add(unMagazine.getNom());
 		}
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_list_view,R.id.textView3, list);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_list_view,R.id.titre_liste_magazine, list);
 		laListView.setAdapter(adapter);
 	}
 

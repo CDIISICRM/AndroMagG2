@@ -6,11 +6,60 @@
     tools:context="fr.cdig2.androMag.controller.MagazineActivity"
     tools:ignore="MergeRootFrame" >
 
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" 
+        android:gravity="top" >
+    	
+        <TextView 
+            android:id="@+id/titre_activite_mag"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text= "@string/titre_mag_activity"
+            android:textSize="30sp" 
+           />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp" 
+            android:gravity= "center">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity= "left" 
+                android:text="Ajouter" 
+                android:layout_marginTop="5sp"
+                android:width="100dp"
+                android:height="15dp"
+                android:layout_marginRight="10dp"
+                />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity= "right"
+                android:text="Supprimer"
+                android:width="100dp"
+                android:height="15dp"
+                android:layout_marginLeft="10dp"
+                />
+
+        </LinearLayout>
+
+	    <ListView
+	        android:id="@+id/listView1"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5sp" >
+	    </ListView>
+    </LinearLayout>
+    
+
  	
 </FrameLayout>
 
