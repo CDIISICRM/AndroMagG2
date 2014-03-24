@@ -181,6 +181,7 @@ public class DBAdapter {
         open();
         db.delete("commentaires", "id="+monCommentaire.getId(), null);
         close();
+        
     }
     
     
