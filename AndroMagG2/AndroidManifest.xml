@@ -28,6 +28,11 @@
             android:name="fr.cdig2.androMag.controller.MagazineActivity"
             android:label="@string/title_activity_magazine" >
         </activity>
+        
+        <activity
+            android:name="fr.cdig2.androMag.controller.NumerosActivity"
+            android:label="@string/detail_numero_activity" >
+        </activity>
     </application>
 
 </manifest>

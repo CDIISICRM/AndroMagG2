@@ -8,6 +8,9 @@ package fr.cdig2.androMag.controller;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.TextView;
+import dbAccess.DBAdapter;
+import fr.cdig2.androMag.metier.Magazine;
 
 /**
  *
@@ -21,7 +24,12 @@ public class NumerosActivity extends Activity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        // ToDo add your GUI initialization code here        
+        setContentView(R.layout.numeros);
+        
+        TextView laTextView = (TextView) findViewById(R.id.detail_numero);
+        DBAdapter dba = new DBAdapter(this);
+        Magazine leMagazine = dba.selectMagazine(this.getIntent().getLongExtra("idMagazine", 0));
+        laTextView.setText(leMagazine.toString());
     }
     
 }

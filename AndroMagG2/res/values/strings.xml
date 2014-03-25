@@ -7,5 +7,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string android:id="@+id/titre_mag_activity" android:layout_width="wrap_content" android:layout_height="wrap_content" name="titre_mag_activity">Tous les magazines</string>
+    <string android:id="@+id/detail_numero_activity" android:layout_width="wrap_content" android:layout_height="wrap_content" name="detail_numero_activity">Détail Numéro</string>
 
 </resources>

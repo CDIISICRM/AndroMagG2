@@ -75,8 +75,8 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
     public void onClickNom(Magazine item, int position) {
         
         Log.i("magazine", item.toString());
-//        Intent uneIntent = new Intent(this, NumerosActivity.class);
-//        this.startActivity(uneIntent);
+        Intent uneIntent = new Intent(this, NumerosActivity.class).putExtra("idMagazine", item.getId());
+        this.startActivity(uneIntent);
     }
 
 	/**
