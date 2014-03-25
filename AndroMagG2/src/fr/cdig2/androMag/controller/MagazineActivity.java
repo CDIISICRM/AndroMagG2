@@ -35,7 +35,7 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
 		ListView laListView = (ListView)findViewById(R.id.listView1);
 		
 		DBAdapter dba = new DBAdapter(this);
-		ArrayList<Magazine> lesMagazines = dba.slectTousLesMagazines();
+		ArrayList<Magazine> lesMagazines = dba.selectTousLesMagazines();
 
                 
 //		ArrayList<String> list = new ArrayList<String>();

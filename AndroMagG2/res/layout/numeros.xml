@@ -1,15 +1,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/numeros"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     tools:context="fr.cdig2.androMag.controller.NumerosActivity"
     tools:ignore="MergeRootFrame" >
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" 
         android:gravity="top" >
         
@@ -17,9 +16,56 @@
             android:id="@+id/detail_numero"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="10sp" 
+            android:textSize="@dimen/titre_page" 
             />
         
+         <ExpandableListView
+             android:id="@+id/combo_detail_commentaire"
+             android:layout_width="match_parent"
+             android:layout_height="5dp"
+             android:contentDescription="@string/title_activity_magazine" >
+
+	    </ExpandableListView>
+	    
+	    <TextView
+	        android:id="@+id/titre_mag_detail_commentaire"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Titre du magazine" />
+	
+	    <RatingBar
+	        android:id="@+id/note_detail_commentaire"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+	    
+		 <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" 
+		        android:gravity="top" >
+		        
+		        <Button
+			        android:id="@+id/ajouter_detail_commentaire"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/ajouter" />
+			
+			    <Button
+			        android:id="@+id/supprimer_detail_commentaire"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/supprimer" />
+		    </LinearLayout>
+		    
+	    <ListView
+	        android:id="@+id/listview_detail_commentaire"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+	    </ListView>
+        
+        
     </LinearLayout>
+    
+   
     
 </FrameLayout>

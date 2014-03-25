@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class DBAdapter {
     private static final String TAG = "DBAdapter";
     private final Context context;
-    private DBHelper databaseHelper;
+    private DBHelper databaseHelper;  
     private SQLiteDatabase db;
 
     public DBAdapter(Context ctx)
@@ -68,7 +68,7 @@ public class DBAdapter {
     	return mCursor;
     }
     
-    public ArrayList<Magazine> slectTousLesMagazines(){
+    public ArrayList<Magazine> selectTousLesMagazines(){
     	ArrayList<Magazine> lesMagazines = new ArrayList<Magazine>();
     	String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_MAGAZINES;
     	Cursor cur = ExecuteQuery(sql, null);

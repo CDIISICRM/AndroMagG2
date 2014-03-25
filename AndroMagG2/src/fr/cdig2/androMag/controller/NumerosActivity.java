@@ -6,8 +6,11 @@
 
 package fr.cdig2.androMag.controller;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import dbAccess.DBAdapter;
 import fr.cdig2.androMag.metier.Magazine;
@@ -29,7 +32,12 @@ public class NumerosActivity extends Activity {
         TextView laTextView = (TextView) findViewById(R.id.detail_numero);
         DBAdapter dba = new DBAdapter(this);
         Magazine leMagazine = dba.selectMagazine(this.getIntent().getLongExtra("idMagazine", 0));
-        laTextView.setText(leMagazine.toString());
-    }
+        laTextView.setText(leMagazine.getNom());
+        
+        ArrayList listeMag = dba.selectTousLesMagazines();
+        MagazineAdapter ma = new MagazineAdapter(listeMag, this);
+        ExpandableListView lv = (ExpandableListView) findViewById(R.id.combo_detail_commentaire);
+        lv.setAdapter(ma);
+    } 
     
 }

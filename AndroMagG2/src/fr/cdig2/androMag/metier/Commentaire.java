@@ -7,8 +7,6 @@
 package fr.cdig2.androMag.metier;
 
 import dbAccess.DBAdapter;
-import dbAccess.DBHelper;
-import android.content.ContentValues;
 import android.content.Context;
 
 /**

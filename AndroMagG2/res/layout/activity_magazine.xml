@@ -17,8 +17,7 @@
             android:id="@+id/titre_activite_mag"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text= "@string/titre_mag_activity"
-            android:textSize="30sp" 
+            android:textSize="@dimen/titre_page" 
            />
 
         <LinearLayout
