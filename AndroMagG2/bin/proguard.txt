@@ -1,6 +1,0 @@
-# view AndroidManifest.xml #generated:10
--keep class fr.cdig2.androMag.controller.AndroMag { <init>(...); }
-
-# view AndroidManifest.xml #generated:27
--keep class fr.cdig2.androMag.controller.MagazineActivity { <init>(...); }
-
