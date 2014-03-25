@@ -13,7 +13,7 @@
         android:gravity="top" >
         
         <TextView
-            android:id="@+id/detail_numero"
+            android:id="@+id/detail_magazine"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/titre_page" 

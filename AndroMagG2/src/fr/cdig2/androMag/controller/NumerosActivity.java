@@ -29,7 +29,7 @@ public class NumerosActivity extends Activity {
         super.onCreate(icicle);
         setContentView(R.layout.numeros);
         
-        TextView laTextView = (TextView) findViewById(R.id.detail_numero);
+        TextView laTextView = (TextView) findViewById(R.id.detail_magazine);
         DBAdapter dba = new DBAdapter(this);
         Magazine leMagazine = dba.selectMagazine(this.getIntent().getLongExtra("idMagazine", 0));
         laTextView.setText(leMagazine.getNom());

@@ -1,4 +1,5 @@
 /AndroMagG2/gen/
 /AndroMagG2/nbandroid/
 /AndromagG2/bin/
+!/AndromagG2/bin/res/
 *.class
