@@ -14,6 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.cdig2.androMag.metier.Magazine;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +26,8 @@ public class MagazineAdapter extends BaseAdapter{
     private List<Magazine> listeMag;
     private Context contexte;
     private LayoutInflater inflater;
+    
+    private ArrayList<MagazineAdapterListener> magListener = new ArrayList<MagazineAdapterListener>();
 
     public MagazineAdapter(List<Magazine> listeMag, Context contexte) {
         this.listeMag = listeMag;
@@ -33,6 +36,15 @@ public class MagazineAdapter extends BaseAdapter{
     }
    
 
+    public void addListener(MagazineAdapterListener listener){
+        magListener.add(listener);
+    }
+    
+    private void sendListener(Magazine item, int position){
+        for(int i = magListener.size() - 1; i>=0; i--){
+            magListener.get(i).onClickNom(item, position);
+        }
+    }
     public int getCount() {
         return listeMag.size();
     }
@@ -56,8 +68,20 @@ public class MagazineAdapter extends BaseAdapter{
         TextView magazineNom = (TextView) layoutItem.findViewById(R.id.magazine_nom);
         
         magazineNom.setText(listeMag.get(position).getNom());
+        magazineNom.setTag(position);
+        magazineNom.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Integer position = (Integer) v.getTag();
+                sendListener(listeMag.get(position), position);
+            }
+        });
         
         return layoutItem;
+    }
+    
+    public interface MagazineAdapterListener {
+        public void onClickNom(Magazine item, int position);
     }
     
 }

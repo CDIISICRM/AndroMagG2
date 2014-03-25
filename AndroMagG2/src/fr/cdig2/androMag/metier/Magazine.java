@@ -1,10 +1,12 @@
 package fr.cdig2.androMag.metier;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import dbAccess.DBAdapter;
 import java.util.ArrayList;
 
-public class Magazine {
+public class Magazine{
 	private long id; 
     private String nom; 
     private long idTheme;
@@ -48,5 +50,6 @@ public class Magazine {
     public String toString() {
         return "Magazine{" + "id=" + id + ", nom=" + nom + ", idTheme=" + idTheme + ", prix=" + prix + ", lesIdNumeros=" + lesIdNumeros.toString() + '}';
     }
+
     
 }

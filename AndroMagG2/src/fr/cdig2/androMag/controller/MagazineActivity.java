@@ -7,6 +7,7 @@ import fr.cdig2.androMag.metier.Magazine;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,9 +17,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.os.Build;
+import android.util.Log;
 import android.widget.TextView;
 
-public class MagazineActivity extends Activity {
+public class MagazineActivity extends Activity implements MagazineAdapter.MagazineAdapterListener{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class MagazineActivity extends Activity {
                 MagazineAdapter adapter = new MagazineAdapter(lesMagazines, this);
 //		ArrayAdapter<Magazine> adapter = new ArrayAdapter<Magazine>(this, R.layout.item_list_view,R.id.magazineId, lesMagazines);
 
-
+                adapter.addListener(this);
 		laListView.setAdapter(adapter);
 	}
 
@@ -69,6 +71,13 @@ public class MagazineActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+    public void onClickNom(Magazine item, int position) {
+        
+        Log.i("magazine", item.toString());
+//        Intent uneIntent = new Intent(this, NumerosActivity.class);
+//        this.startActivity(uneIntent);
+    }
 
 	/**
 	 * A placeholder fragment containing a simple view.

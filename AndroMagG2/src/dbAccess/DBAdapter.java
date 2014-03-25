@@ -75,9 +75,17 @@ public class DBAdapter {
     	while(!cur.isAfterLast()){
             
             Magazine unMagazine = new Magazine(cur.getLong(0), cur.getString(1), cur.getLong(2), cur.getInt(3), null);
+            
+            ArrayList<Numero> lesNumeros = selectNumeroParIdMagazine(cur.getLong(0));
+            ArrayList lesIdNumero = new ArrayList();
+            for(Numero unNumero : lesNumeros){
+                lesIdNumero.add(unNumero.getId());
+            }
+            unMagazine.setLesIdNumeros(lesIdNumero);
             lesMagazines.add(unMagazine);
             cur.moveToNext();
     	}
+        
     	return lesMagazines;
     }
     public ArrayList<Article> selectArticleParIdNo(long idNo){

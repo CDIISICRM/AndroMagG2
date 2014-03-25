@@ -5,6 +5,8 @@ C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\clas
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\BuildConfig.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\MagazineActivity$PlaceholderFragment.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\MagazineActivity.class \
+C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\MagazineAdapter$1.class \
+C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\MagazineAdapter$MagazineAdapterListener.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\MagazineAdapter.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\NumerosActivity.class \
 C:\Users\crm\Documents\MEGAsync\Baptiste\netBeans\AndroMagG2\AndroMagG2\bin\classes\fr\cdig2\androMag\controller\R$attr.class \
