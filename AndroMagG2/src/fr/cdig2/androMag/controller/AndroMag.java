@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import dbAccess.DBAdapter;
 import fr.cdig2.androMag.metier.Commentaire;
+import fr.cdig2.androMag.metier.Magazine;
 
 
 
@@ -25,8 +26,9 @@ public class AndroMag extends Activity
 //        //insérer un theme
 //       dba.insertTheme("Maison");
 //        
-//        //insérer un magazine
-//        dba.insertMagazine("A La Maison", 10, 1);
+        //insérer un magazine
+//        Magazine unMagazine = new Magazine(0, "Playboy", 1, 10, null);
+//        dba.insertMagazine(unMagazine);
 //        Commentaire nosCommentaire = new Commentaire(0, "Commentaire 2");
 //        nosCommentaire.EnregistrerCommentaire(this.getApplicationContext());
 //        

@@ -42,12 +42,7 @@ public class Commentaire{
 	public void setNote(int val) { note = val; }
 	public void ssetTexte(String val) { texte = val; }
 	
-	// Enregistrer un commentaire
-	public void EnregistrerCommentaire(Context context)
-		{
-		DBAdapter db = new DBAdapter(context);
-		this.id = db.insertCommentaire(this);
-		}
+	
 
     @Override
     public String toString() {

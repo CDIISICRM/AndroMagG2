@@ -188,7 +188,7 @@ public class DBAdapter {
         return leMagazine;
     }
     
-    public long insertCommentaire(Commentaire monCommentaire){
+    public long insertCommentaireNumero(Commentaire monCommentaire, long idNumero){
         
         //insérer un magazine
         ContentValues initialiserCommentaire = new ContentValues();
@@ -198,6 +198,28 @@ public class DBAdapter {
         //insertion
         open();
         long idCommentaire=  db.insert(DBHelper.DATABASE_TABLE_COMMENTAIRES, null, initialiserCommentaire);
+        ContentValues assoc = new ContentValues();
+        assoc.put("idNumero", idNumero);
+        assoc.put("idCommentaire", idCommentaire);
+        db.insert(DBHelper.DATABASE_TABLE_COMMENTAIRE_NUMERO, null, assoc);
+        close();
+        return idCommentaire;
+    }
+    
+     public long insertCommentaireArticle(Commentaire monCommentaire, long idArticle){
+        
+        //insérer un magazine
+        ContentValues initialiserCommentaire = new ContentValues();
+        initialiserCommentaire.put("rate", monCommentaire.getNote());
+        initialiserCommentaire.put("texte", monCommentaire.getTexte());
+        
+        //insertion
+        open();
+        long idCommentaire=  db.insert(DBHelper.DATABASE_TABLE_COMMENTAIRES, null, initialiserCommentaire);
+        ContentValues assoc = new ContentValues();
+        assoc.put("idArticle", idArticle);
+        assoc.put("idCommentaire", idCommentaire);
+        db.insert(DBHelper.DATABASE_TABLE_COMMENTAIRE_NUMERO, null, assoc);
         close();
         return idCommentaire;
     }
@@ -205,7 +227,7 @@ public class DBAdapter {
     public void supprimerCommentaire(Commentaire monCommentaire) {
         
         open();
-        db.delete("commentaires", "id="+monCommentaire.getId(), null);
+        db.delete(DBHelper.DATABASE_TABLE_COMMENTAIRES, "id="+monCommentaire.getId(), null);
         close();
         
     }
