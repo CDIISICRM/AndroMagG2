@@ -4,35 +4,51 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+        <uses-permission android:name="android.permission.INTERNET" >
+   		</uses-permission>
+        <uses-sdk
+            android:minSdkVersion="14"
+            android:targetSdkVersion="17" />
+        
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
             android:name="fr.cdig2.androMag.controller.AndroMag"
             android:label="@string/app_name" >
+  
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+       		</intent-filter>
         </activity>
 
-        <uses-permission android:name="android.permission.INTERNET" >
-        </uses-permission>
+        
+         
 
-        <uses-sdk
-            android:minSdkVersion="14"
-            android:targetSdkVersion="17" />
+        
 
         <activity
             android:name="fr.cdig2.androMag.controller.MagazineActivity"
             android:label="@string/title_activity_magazine" >
         </activity>
-        
         <activity
             android:name="fr.cdig2.androMag.controller.NumerosActivity"
             android:label="@string/detail_numero_activity" >
         </activity>
+        <activity
+            android:name="fr.cdig2.androMag.controller.FormCommentaire"
+            android:label="@string/title_activity_form_commentaire" >
+        </activity>
+        <activity
+            android:name="fr.cdig2.androMag.controller.SupprimerCommentaire"
+            android:label="@string/title_activity_supprimer_commentaire" >
+        </activity>
+        <activity
+            android:name="fr.cdig2.androMag.controller.SupprimerMagazine"
+            android:label="@string/title_activity_supprimer_magazine" >
+        </activity>
+        
     </application>
 
 </manifest>
