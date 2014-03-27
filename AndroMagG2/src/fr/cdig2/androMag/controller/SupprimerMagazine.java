@@ -41,11 +41,17 @@ public class SupprimerMagazine extends Activity {
 //		if (savedInstanceState == null) {
 //			getFragmentManager().beginTransaction()
 //					.add(R.id.container, new PlaceholderFragment()).commit();
-//		}
-                
+//		};
                 DBAdapter dba = new DBAdapter(this);
-                Magazine unMagazine = dba.selectMagazine(intentionPrecedente.getLongExtra("idMagazine", 0));
-                dba.supprimerMagazine(unMagazine);
+                long[] lesIds = intentionPrecedente.getLongArrayExtra("idsMagazines");
+                for(int i = lesIds.length -1; i >= 0; i--){
+                    if(lesIds[1] != 0){
+                        Magazine unMagazine = dba.selectMagazine(lesIds[i]);
+                        dba.supprimerMagazine(unMagazine);
+                    }
+                    
+                }
+                
 	}
 
 	@Override

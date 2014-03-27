@@ -19,10 +19,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.os.Build;
 import android.util.Log;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MagazineActivity extends Activity implements MagazineAdapter.MagazineAdapterListener, View.OnClickListener{
-
+    long[] lesIdMagazines;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,7 +44,11 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
 		}
 	*/	
 		ListView laListView = (ListView)findViewById(R.id.listView1);
-		
+                int taille = laListView.getCount();
+		lesIdMagazines= new long[taille];
+                for(int i = 0 ; i<taille; i++){
+                    lesIdMagazines[i] = 0;
+                }
 		DBAdapter dba = new DBAdapter(this);
 		ArrayList<Magazine> lesMagazines = dba.selectTousLesMagazines();
 
@@ -105,6 +111,16 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
 		}
 	}
 	
+        public void myHandler(View v){
+            CheckBox cb = (CheckBox) v;
+            long id = Integer.parseInt(cb.getTag(1).toString());
+            int position = Integer.parseInt(cb.getTag(2).toString());
+            if(cb.isChecked()){
+                lesIdMagazines[position - 1] = id;
+            }else{
+                lesIdMagazines[position - 1] = 0;
+            }
+        }
 	@Override
 	public void onClick(View v) 
 		{
@@ -116,7 +132,19 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
 	            break;
 			case R.id.bouton_supprimer_magazine:
 				Intent monIntention = new Intent(this, SupprimerMagazine.class);
-				monIntention.putExtra("idMagazine", 1L);
+//                                ArrayList<CheckBox> lesCheckBoxs = new ArrayList<CheckBox>();
+//                                ListView laListView = (ListView) findViewById(R.id.listView1);
+//                                for(int i = laListView.getCount() - 1; i>=0; i--){
+//                                    LinearLayout l  = (LinearLayout) laListView.getChildAt(i);
+//                                    CheckBox uneCheckBox = (CheckBox) l.getChildAt(3);
+//                                    lesCheckBoxs.add(uneCheckBox);
+//                                }
+//				
+//                                for(int i = lesCheckBoxs.size() - 1; i >= 0; i--){
+//                                    CheckBox uneBox = (CheckBox) lesCheckBoxs.get(i);
+//                                    lesIdMagazines[i] =  Long.getLong(uneBox.getTag().toString());
+//                                }
+                                monIntention.putExtra("idsMagazines", lesIdMagazines);
 				startActivityForResult(monIntention, 12);
 				break;
 	          }

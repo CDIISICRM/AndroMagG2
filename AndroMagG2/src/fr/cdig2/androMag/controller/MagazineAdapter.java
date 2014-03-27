@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.cdig2.androMag.metier.Magazine;
@@ -69,6 +70,9 @@ public class MagazineAdapter extends BaseAdapter {
 //        TextView magazineNote = (TextView) layoutItem.findViewById(R.id.note_liste_magazine);
 //
 //        magazineNote.setText( String.valueOf(listeMag.get(position).getId()));
+        CheckBox uneCheckBox = (CheckBox) layoutItem.findViewById(R.id.ck_magazine);
+        uneCheckBox.setTag(1,listeMag.get(position).getId());
+        uneCheckBox.setTag(2, position);
         magazineNom.setText(listeMag.get(position).getNom());
         magazineNom.setTag(position);
         magazineNom.setOnClickListener(new View.OnClickListener() {
