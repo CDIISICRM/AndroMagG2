@@ -15,17 +15,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.os.Build;
 import android.util.Log;
 import android.widget.TextView;
 
-public class MagazineActivity extends Activity implements MagazineAdapter.MagazineAdapterListener{
+public class MagazineActivity extends Activity implements MagazineAdapter.MagazineAdapterListener, View.OnClickListener{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_magazine);
+		
+		Button boutonAjouter = (Button)findViewById(R.id.bouton_ajouter_magazine);
+		boutonAjouter.setOnClickListener(this);
+		
+		Button boutonSupprimer = (Button)findViewById(R.id.bouton_supprimer_magazine);
+		boutonSupprimer.setOnClickListener(this);
+		
+		
 /*
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
@@ -95,5 +104,22 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
 			return rootView;
 		}
 	}
+	
+	@Override
+	public void onClick(View v) 
+		{
+		System.out.println("Un click 2!");
+        switch (v.getId())
+        	{
+	        case R.id.bouton_ajouter_magazine:
+	            System.out.println("Ajouter magazine !");
+	            break;
+			case R.id.bouton_supprimer_magazine:
+				Intent monIntention = new Intent(this, SupprimerMagazine.class);
+				//monIntention.putExtra("idMagazine", 1);
+				startActivityForResult(monIntention, 12);
+				break;
+	          }
+		}
 
 }

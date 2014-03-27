@@ -6,9 +6,36 @@
     <string name="title_activity_magazine">MagazineActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string android:id="@+id/titre_mag_activity" android:layout_width="wrap_content" android:layout_height="wrap_content" name="titre_mag_activity">Tous les magazines</string>
-    <string android:id="@+id/detail_numero_activity" android:layout_width="wrap_content" android:layout_height="wrap_content" name="detail_numero_activity">Détail Numéro</string>
+    <string android:id="@+id/titre_mag_activity" name="titre_mag_activity" android:layout_width="wrap_content" android:layout_height="wrap_content">Tous les magazines</string>
+    <string android:id="@+id/detail_numero_activity" name="detail_numero_activity" android:layout_width="wrap_content" android:layout_height="wrap_content">Détail Numéro</string>
     <string name="ajouter">Ajouter</string>
     <string name="supprimer">Supprimer</string>
+    <string name="title_activity_form_commentaire">FormCommentaire</string>
+    <string name="title_activity_supprimer_commentaire">SupprimerCommentaire</string>
+    <string name="title_activity_supprimer_magazine">SupprimerMagazine</string>
 
+    
+    <string name="lbl_gestionMag">Gestion des magazines</string>
+    <string name="lbl_noteMoyenne">Note moy.</string>
+    <string name="lbl_magazine">Magazine</string>
+    <string name="lbl_nbCommentaire">Nbre commentaire</string>
+    <string name="lbl_gestion">Gestion</string>
+    <string name="lbl_note">Note</string>
+    <string name="lbl_zoneCommentee">Zone commentée</string>
+    <string name="lbl_commentaire">Commentaire</string>
+    <string name="lbl_comfirmationSuppressionMag">Etes vous sûr de vouloir effacer le
+magazine ?</string>
+<string name="lbl_comfirmationSuppressionCommentaire">Etes vous sûr de vouloir effacer le
+commentaire ?</string>
+    
+    <string name="btn_accueil">Accueil</string>
+    <string name="btn_ajouter">Ajouter</string>
+    <string name="btn_supprimer">Supprimer</string>
+    <string name="btn_accueilMag">Accueil magazines</string>
+    <string name="btn_oui">Oui</string>
+	<string name="btn_non">Non</string>
+	<string name="bouton_ajouter_magazine">Ajouter</string>
+	<string name="bouton_supprimer_magazine">Supprimer</string>
+	<string name="supr_titre_magazine">Magazine</string>
+	
 </resources>

@@ -13,6 +13,12 @@
         android:gravity="top" >
         
         <TextView
+	        android:id="@+id/titre_mag_detail_commentaire"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Titre du magazine" />
+        
+        <TextView
             android:id="@+id/detail_magazine"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -23,15 +29,11 @@
              android:id="@+id/combo_detail_commentaire"
              android:layout_width="match_parent"
              android:layout_height="5dp"
-             android:contentDescription="@string/title_activity_magazine" >
+          	 >
 
 	    </ExpandableListView>
 	    
-	    <TextView
-	        android:id="@+id/titre_mag_detail_commentaire"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="Titre du magazine" />
+	    
 	
 	    <RatingBar
 	        android:id="@+id/note_detail_commentaire"
@@ -62,10 +64,6 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content" >
 	    </ListView>
-        
-        
+	      
     </LinearLayout>
-    
-   
-    
 </FrameLayout>

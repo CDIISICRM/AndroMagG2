@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author crm
  */
-public class MagazineAdapter extends BaseAdapter{
+public class MagazineAdapter extends BaseAdapter {
 
     private List<Magazine> listeMag;
     private Context contexte;
@@ -84,6 +84,5 @@ public class MagazineAdapter extends BaseAdapter{
     
     public interface MagazineAdapterListener {
         public void onClickNom(Magazine item, int position);
-    }
-    
+    }    
 }
