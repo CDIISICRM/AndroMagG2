@@ -206,6 +206,8 @@ public class DBAdapter {
         return idCommentaire;
     }
     
+    
+    
      public long insertCommentaireArticle(Commentaire monCommentaire, long idArticle){
         
         //insérer un magazine
@@ -219,7 +221,25 @@ public class DBAdapter {
         ContentValues assoc = new ContentValues();
         assoc.put("idArticle", idArticle);
         assoc.put("idCommentaire", idCommentaire);
-        db.insert(DBHelper.DATABASE_TABLE_COMMENTAIRE_NUMERO, null, assoc);
+        db.insert(DBHelper.DATABASE_TABLE_COMMENTAIRE_ARTICLE, null, assoc);
+        close();
+        return idCommentaire;
+    }
+     
+      public long insertCommentaireRubrique(Commentaire monCommentaire, long idRubrique){
+        
+        //insérer un magazine
+        ContentValues initialiserCommentaire = new ContentValues();
+        initialiserCommentaire.put("rate", monCommentaire.getNote());
+        initialiserCommentaire.put("texte", monCommentaire.getTexte());
+        
+        //insertion
+        open();
+        long idCommentaire=  db.insert(DBHelper.DATABASE_TABLE_COMMENTAIRES, null, initialiserCommentaire);
+        ContentValues assoc = new ContentValues();
+        assoc.put("idRubrique", idRubrique);
+        assoc.put("idCommentaire", idCommentaire);
+        db.insert(DBHelper.DATABASE_TABLE_COMMENTAIRE_RUBRIQUE, null, assoc);
         close();
         return idCommentaire;
     }

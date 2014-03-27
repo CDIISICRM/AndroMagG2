@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.cdig2.androMag.controller;
 
 import android.app.Activity;
@@ -17,15 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.os.Build;
-import dbAccess.DBAdapter;
-import fr.cdig2.androMag.metier.Magazine;
-/**
- *
- * @author crm
- */
-public class SupprimerMagazine extends Activity {
 
-    Intent intentionPrecedente;
+public class SupprimerMagazine_old extends Activity {
+
+	Intent intentionPrecedente;
 	int idMagazineSupprimer;
 	
 	@Override
@@ -38,14 +28,10 @@ public class SupprimerMagazine extends Activity {
 		TextView titreMagazine = (TextView)findViewById(R.id.supr_titre_magazine);
 		titreMagazine.setText("Magazine");
 		
-//		if (savedInstanceState == null) {
-//			getFragmentManager().beginTransaction()
-//					.add(R.id.container, new PlaceholderFragment()).commit();
-//		}
-                
-                DBAdapter dba = new DBAdapter(this);
-                Magazine unMagazine = dba.selectMagazine(intentionPrecedente.getLongExtra("idMagazine", 0));
-                dba.supprimerMagazine(unMagazine);
+		if (savedInstanceState == null) {
+			getFragmentManager().beginTransaction()
+					.add(R.id.container, new PlaceholderFragment()).commit();
+		}
 	}
 
 	@Override
@@ -68,22 +54,21 @@ public class SupprimerMagazine extends Activity {
 		return super.onOptionsItemSelected(item); 
 	}
 
-//	/**
-//	 * A placeholder fragment containing a simple view.
-//	 */
-//	public static class PlaceholderFragment extends Fragment {
-//
-//		public PlaceholderFragment() {
-//		}
-//
-//		@Override
-//		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//				Bundle savedInstanceState) {
-//			View rootView = inflater.inflate(
-//					R.layout.activity_supprimer_magazine, container, false);
-//			return rootView;
-//		}
-//	}
+	/**
+	 * A placeholder fragment containing a simple view.
+	 */
+	public static class PlaceholderFragment extends Fragment {
+
+		public PlaceholderFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(
+					R.layout.activity_supprimer_magazine, container, false);
+			return rootView;
+		}
+	}
 
 }
-

@@ -66,9 +66,9 @@ public class MagazineAdapter extends BaseAdapter {
         }
         
         TextView magazineNom = (TextView) layoutItem.findViewById(R.id.magazine_nom);
-        TextView magazineNote = (TextView) layoutItem.findViewById(R.id.note_liste_magazine);
-
-        magazineNote.setText( String.valueOf(listeMag.get(position).getId()));
+//        TextView magazineNote = (TextView) layoutItem.findViewById(R.id.note_liste_magazine);
+//
+//        magazineNote.setText( String.valueOf(listeMag.get(position).getId()));
         magazineNom.setText(listeMag.get(position).getNom());
         magazineNom.setTag(position);
         magazineNom.setOnClickListener(new View.OnClickListener() {

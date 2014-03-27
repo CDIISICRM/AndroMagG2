@@ -116,7 +116,7 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
 	            break;
 			case R.id.bouton_supprimer_magazine:
 				Intent monIntention = new Intent(this, SupprimerMagazine.class);
-				//monIntention.putExtra("idMagazine", 1);
+				monIntention.putExtra("idMagazine", 1L);
 				startActivityForResult(monIntention, 12);
 				break;
 	          }
