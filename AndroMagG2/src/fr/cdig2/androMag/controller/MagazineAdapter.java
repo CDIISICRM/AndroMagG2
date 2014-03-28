@@ -71,8 +71,8 @@ public class MagazineAdapter extends BaseAdapter {
 //
 //        magazineNote.setText( String.valueOf(listeMag.get(position).getId()));
         CheckBox uneCheckBox = (CheckBox) layoutItem.findViewById(R.id.ck_magazine);
-        uneCheckBox.setTag(1,listeMag.get(position).getId());
-        uneCheckBox.setTag(2, position);
+        uneCheckBox.setTag(listeMag.get(position));
+//        uneCheckBox.setTag(2, position);
         magazineNom.setText(listeMag.get(position).getNom());
         magazineNom.setTag(position);
         magazineNom.setOnClickListener(new View.OnClickListener() {

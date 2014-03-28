@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MagazineActivity extends Activity implements MagazineAdapter.MagazineAdapterListener, View.OnClickListener{
-    long[] lesIdMagazines;
+    ArrayList<Long> lesIdMagazines;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,11 +44,9 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
 		}
 	*/	
 		ListView laListView = (ListView)findViewById(R.id.listView1);
-                int taille = laListView.getCount();
-		lesIdMagazines= new long[taille];
-                for(int i = 0 ; i<taille; i++){
-                    lesIdMagazines[i] = 0;
-                }
+//                int taille = laListView.getCount();
+		lesIdMagazines= new ArrayList<Long>();
+                
 		DBAdapter dba = new DBAdapter(this);
 		ArrayList<Magazine> lesMagazines = dba.selectTousLesMagazines();
 
@@ -113,12 +111,13 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
 	
         public void myHandler(View v){
             CheckBox cb = (CheckBox) v;
-            long id = Integer.parseInt(cb.getTag(1).toString());
-            int position = Integer.parseInt(cb.getTag(2).toString());
+            Magazine leMagazine = (Magazine) cb.getTag();
+            long id = leMagazine.getId();
+//            int position = Integer.parseInt(cb.getTag(2).toString());
             if(cb.isChecked()){
-                lesIdMagazines[position - 1] = id;
+                lesIdMagazines.add(id);
             }else{
-                lesIdMagazines[position - 1] = 0;
+                lesIdMagazines.remove(id);
             }
         }
 	@Override
@@ -144,7 +143,12 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
 //                                    CheckBox uneBox = (CheckBox) lesCheckBoxs.get(i);
 //                                    lesIdMagazines[i] =  Long.getLong(uneBox.getTag().toString());
 //                                }
-                                monIntention.putExtra("idsMagazines", lesIdMagazines);
+                                long[] idTab = new long[lesIdMagazines.size()];
+                                
+                                for(int i = lesIdMagazines.size() - 1; i>=0; i--){
+                                    idTab[i] = lesIdMagazines.get(i);
+                                }
+                                monIntention.putExtra("idsMagazines", idTab);
 				startActivityForResult(monIntention, 12);
 				break;
 	          }
