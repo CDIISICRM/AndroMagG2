@@ -153,5 +153,8 @@ public class MagazineActivity extends Activity implements MagazineAdapter.Magazi
 				break;
 	          }
 		}
-
+        @Override
+        public void onResume(){
+            onCreate(Bundle.EMPTY);
+        }
 }
